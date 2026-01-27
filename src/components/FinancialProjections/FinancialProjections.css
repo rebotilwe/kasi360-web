@@ -1,0 +1,189 @@
+/* components/FinancialProjections/FinancialProjections.css */
+.financial-projections {
+  padding: 40px 0;
+}
+
+.projections-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.projections-header h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #00C853, #0D47A1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.projections-header p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+}
+
+.projections-timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto 60px;
+  position: relative;
+}
+
+.projections-timeline::before {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00C853, #0D47A1);
+  opacity: 0.3;
+}
+
+.timeline-item {
+  text-align: center;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-period {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.timeline-revenue {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00C853, #0D47A1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+}
+
+.timeline-users {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px 15px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.timeline-description {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.timeline-connector {
+  margin-top: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.connector-line {
+  height: 2px;
+  background: rgba(0, 200, 83, 0.3);
+  margin: 0 10px;
+}
+
+.connector-arrow {
+  position: absolute;
+  right: -15px;
+  top: -9px;
+  color: #00C853;
+  font-size: 1.2rem;
+}
+
+.milestones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.milestone-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s ease;
+}
+
+.milestone-card:hover {
+  border-color: rgba(0, 200, 83, 0.3);
+  transform: translateY(-5px);
+}
+
+.milestone-icon {
+  font-size: 2rem;
+  color: #00C853;
+  background: rgba(0, 200, 83, 0.1);
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.milestone-content {
+  flex: 1;
+}
+
+.milestone-title {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 5px;
+}
+
+.milestone-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.milestone-description {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .projections-timeline {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .projections-timeline::before {
+    display: none;
+  }
+  
+  .timeline-item {
+    width: 100%;
+  }
+  
+  .timeline-connector {
+    display: none;
+  }
+  
+  .milestones-grid {
+    grid-template-columns: 1fr;
+  }
+}

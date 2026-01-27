@@ -1,0 +1,501 @@
+/* ===== CRITICAL BASE STYLES ===== */
+:root {
+  --kasi-primary: #0D47A1;
+  --kasi-secondary: #FF6D00;
+  --kasi-accent: #00C853;
+  --text-light: #ffffff;
+  --text-dark: #111111;
+  --transition-smooth: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== DEBUG OVERLAY ===== */
+.debug-overlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 255, 0, 0.8);
+  color: black;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 9999;
+  border-radius: 4px;
+  display: block;
+}
+
+/* ===== HERO SLIDER CONTAINER ===== */
+.hero-slider-kasi {
+  width: 100%;
+  height: 100vh !important;
+  min-height: 700px;
+  position: relative;
+  overflow: hidden;
+  background: #050505;
+  margin: 0;
+  padding: 0;
+  display: block;
+  z-index: 2;
+}
+
+/* ===== SWIPER CONTAINER ===== */
+.hero-swiper-kasi {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-swiper-kasi .swiper-wrapper {
+  height: 100% !important;
+}
+
+.hero-swiper-kasi .swiper-slide {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  position: relative;
+}
+
+/* ===== SLIDE CONTAINER ===== */
+.slide-container-kasi {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* ===== BACKGROUND IMAGE ===== */
+.image-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.slide-bg-kasi {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: slowZoom 30s ease-in-out infinite;
+}
+
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.gradient-overlay-kasi {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(5, 5, 5, 0.85) 0%,
+    rgba(5, 5, 5, 0.5) 50%,
+    rgba(5, 5, 5, 0.2) 100%
+  );
+  z-index: 2;
+}
+
+/* ===== CONTENT ===== */
+.slide-content-kasi {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+.content-wrapper-kasi {
+  max-width: 700px;
+  position: relative;
+  z-index: 4;
+}
+
+/* Pre-title */
+.slide-pre-title-kasi {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  opacity: 0;
+  animation: fadeInUp 0.8s 0.3s forwards;
+}
+
+.pre-title-line {
+  width: 40px;
+  height: 1px;
+  background: var(--kasi-accent);
+}
+
+.pre-title-text {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Main Title */
+.slide-title-kasi {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: var(--text-light);
+  opacity: 0;
+  animation: fadeInUp 0.8s 0.5s forwards;
+}
+
+/* Subtitle */
+.slide-subtitle-kasi {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 15px;
+  opacity: 0;
+  animation: fadeInUp 0.8s 0.7s forwards;
+}
+
+/* Description */
+.slide-description-kasi {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 40px;
+  line-height: 1.6;
+  max-width: 600px;
+  opacity: 0;
+  animation: fadeIn 0.8s 0.9s forwards;
+}
+
+/* ===== BUTTONS ===== */
+.button-group-kasi {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Primary Button */
+.btn-primary-kasi {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 35px;
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-kasi::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: white;
+  transition: left 0.3s ease;
+  z-index: 1;
+}
+
+.btn-primary-kasi:hover::before {
+  left: 0;
+}
+
+.btn-primary-kasi span {
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.btn-primary-kasi:hover span {
+  color: #000;
+}
+
+.btn-arrow-kasi {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.btn-primary-kasi:hover .btn-arrow-kasi {
+  transform: translateX(5px);
+}
+
+/* Secondary Button */
+.btn-secondary-kasi {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 0;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-secondary-kasi::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: white;
+  transition: left 0.3s ease;
+  z-index: 1;
+}
+
+.btn-secondary-kasi:hover::before {
+  left: 0;
+}
+
+.btn-secondary-kasi span {
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.btn-secondary-kasi:hover span {
+  color: #000;
+}
+
+.btn-line {
+  width: 40px;
+  height: 1px;
+  background: white;
+  transition: width 0.3s ease, background 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-secondary-kasi:hover .btn-line {
+  width: 60px;
+  background: #000;
+}
+
+/* ===== SLIDE INDICATOR ===== */
+.slide-indicator-kasi {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  z-index: 4;
+}
+
+.current-slide {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--kasi-accent);
+}
+
+.total-slides {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.indicator-line {
+  width: 1px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== NAVIGATION ARROWS ===== */
+.swiper-button-prev-kasi,
+.swiper-button-next-kasi {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  animation: fadeIn 0.8s 1s forwards;
+  transition: all 0.3s ease;
+}
+
+.swiper-button-prev-kasi {
+  left: 40px;
+}
+
+.swiper-button-next-kasi {
+  right: 40px;
+}
+
+.swiper-button-prev-kasi:hover,
+.swiper-button-next-kasi:hover {
+  background: var(--kasi-accent);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.swiper-button-prev-kasi svg,
+.swiper-button-next-kasi svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ===== PAGINATION ===== */
+.swiper-pagination-kasi {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  display: flex;
+  gap: 15px;
+  z-index: 10;
+}
+
+.kasi-bullet {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.kasi-bullet-active {
+  background: var(--kasi-accent);
+  transform: scale(1.3);
+}
+
+/* ===== SCROLL INDICATOR ===== */
+.scroll-indicator-kasi {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  z-index: 10;
+  opacity: 0;
+  animation: fadeIn 0.8s 1.2s forwards;
+}
+
+.scroll-line-kasi {
+  width: 1px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line-kasi::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: var(--kasi-accent);
+  animation: scrollDown 2s infinite;
+}
+
+.scroll-text-kasi {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.7);
+  transform: rotate(90deg);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes scrollDown {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(300%); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .slide-content-kasi {
+    padding: 0 5%;
+  }
+  
+  .swiper-button-prev-kasi,
+  .swiper-button-next-kasi {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-slider-kasi {
+    height: 90vh !important;
+    min-height: 600px;
+  }
+  
+  .slide-title-kasi {
+    font-size: 2.5rem;
+  }
+  
+  .slide-subtitle-kasi {
+    font-size: 1.5rem;
+  }
+  
+  .button-group-kasi {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-slider-kasi {
+    height: 85vh !important;
+    min-height: 500px;
+  }
+  
+  .slide-indicator-kasi {
+    right: 20px;
+  }
+  
+  .swiper-pagination-kasi {
+    left: 20px;
+    bottom: 20px;
+  }
+}
+/* Add this to hide debug overlay */
+.debug-overlay {
+  display: none !important;
+}

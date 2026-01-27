@@ -1,0 +1,143 @@
+/* components/ContactCTA/ContactCTA.css */
+.contact-cta {
+  padding: 60px 0;
+}
+
+.cta-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-content h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #00C853, #0D47A1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cta-content p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 50px;
+  line-height: 1.6;
+}
+
+.cta-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-option {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 30px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  transition: opacity 0.3s ease;
+}
+
+.cta-option.primary::before {
+  background: linear-gradient(135deg, #00C853, #0D47A1);
+}
+
+.cta-option.secondary::before {
+  background: linear-gradient(135deg, #0D47A1, #FF6D00);
+}
+
+.cta-option.accent::before {
+  background: linear-gradient(135deg, #FF6D00, #00C853);
+}
+
+.cta-option:hover::before {
+  opacity: 0.2;
+}
+
+.cta-option:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.option-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.cta-option.primary .option-icon {
+  color: #00C853;
+}
+
+.cta-option.secondary .option-icon {
+  color: #0D47A1;
+}
+
+.cta-option.accent .option-icon {
+  color: #FF6D00;
+}
+
+.option-content {
+  flex: 1;
+  text-align: left;
+}
+
+.option-content h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.option-content p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.option-arrow {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.cta-option:hover .option-arrow {
+  color: #fff;
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .cta-content h3 {
+    font-size: 2rem;
+  }
+  
+  .cta-option {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .option-content {
+    text-align: center;
+  }
+}

@@ -1,0 +1,33 @@
+/* DEBUG SWIPER - Add to global CSS */
+.swiper {
+  border: 5px solid red !important;
+  background: rgba(255, 0, 0, 0.2) !important;
+}
+
+.swiper-wrapper {
+  border: 3px solid blue !important;
+  background: rgba(0, 0, 255, 0.2) !important;
+}
+
+.swiper-slide {
+  border: 2px solid green !important;
+  background: rgba(0, 255, 0, 0.3) !important;
+  min-height: 200px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 2rem !important;
+  color: white !important;
+}
+
+.swiper-slide:nth-child(1) {
+  background: red !important;
+}
+
+.swiper-slide:nth-child(2) {
+  background: blue !important;
+}
+
+.swiper-slide:nth-child(3) {
+  background: green !important;
+}

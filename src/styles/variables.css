@@ -1,0 +1,7 @@
+:root {
+  --bg-dark: #050505;
+  --bg-soft: #0a0a0a;
+  --accent: linear-gradient(135deg, #00ffd5, #7cff00);
+  --text-light: #ffffff;
+  --text-muted: #cfcfcf;
+}

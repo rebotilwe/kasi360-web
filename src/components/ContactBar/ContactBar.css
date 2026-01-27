@@ -1,0 +1,131 @@
+/* ===== CONTACT BAR - CLEAN PILL STYLE ===== */
+:root {
+  --kasi-accent: #00C853;
+  --kasi-secondary: #0D47A1;
+  --kasi-orange: #FF6D00;
+}
+
+.contact-bar-wrapper {
+  position: fixed;
+  top: 16px;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.contact-pill {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 32px;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(245, 245, 245, 0.92));
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 999px;
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.15),
+    0 8px 25px rgba(0, 200, 83, 0.1);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  animation: floatIn 0.8s ease forwards;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.promo-text {
+  font-weight: 700;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #111 30%, var(--kasi-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #111;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.contact-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.contact-item.phone:hover {
+  color: var(--kasi-accent);
+}
+
+.contact-item.email:hover {
+  color: var(--kasi-orange);
+}
+
+.contact-item.location:hover {
+  color: var(--kasi-secondary);
+}
+
+.contact-item svg {
+  font-size: 14px;
+}
+
+.contact-item.phone svg {
+  color: var(--kasi-accent);
+}
+
+.contact-item.email svg {
+  color: var(--kasi-orange);
+}
+
+.contact-item.location svg {
+  color: var(--kasi-secondary);
+}
+
+/* Mobile */
+@media (max-width: 1024px) {
+  .contact-pill {
+    gap: 18px;
+    padding: 10px 24px;
+  }
+  
+  .promo-text {
+    font-size: 12px;
+  }
+  
+  .contact-item {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-pill {
+    display: none;
+  }
+}
