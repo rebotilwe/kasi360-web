@@ -22,6 +22,8 @@ import SuccessStories from "./pages/SuccessStories/SuccessStories";
 
 // Other Pages
 import Demo from "./pages/Demo/Demo";
+import Terms from "./pages/Terms/Terms";
+import Privacy from "./pages/Privacy/Privacy";
 
 // Preloader Component
 import Preloader from "./components/Preloader/Preloader";
@@ -30,6 +32,7 @@ import Preloader from "./components/Preloader/Preloader";
 // import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 import "./App.css";
+import Cookies from "./pages/Cookies/Cookies";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -83,6 +86,9 @@ function App() {
 
               {/* Other Pages */}
               <Route path="/demo" element={<Demo />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/cookies" element={<Cookies />} />
 
               {/* 404 Page */}
               <Route path="*" element={<NotFound />} />
