@@ -1,189 +1,521 @@
-/* components/FinancialProjections/FinancialProjections.css */
+/* components/FinancialProjections/FinancialProjections.css - UPDATED VERSION */
 .financial-projections {
-  padding: 40px 0;
+  padding: 80px 5%;
+  background: rgba(255, 255, 255, 0.01);
+  position: relative;
+  overflow: hidden;
+}
+
+.financial-projections::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(0, 200, 83, 0.03), transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(13, 71, 161, 0.03), transparent 50%);
 }
 
 .projections-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 2;
 }
 
-.projections-header h3 {
-  font-size: 2rem;
-  font-weight: 700;
+.projections-title {
+  font-size: 2.8rem;
+  font-weight: 800;
   color: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   background: linear-gradient(135deg, #00C853, #0D47A1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.projections-header p {
+.projections-subtitle {
+  font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.presentation-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 214, 0, 0.1);
+  color: #FFD600;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 214, 0, 0.2);
+}
+
+.presentation-highlight svg {
   font-size: 1.1rem;
 }
 
-.projections-timeline {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1000px;
-  margin: 0 auto 60px;
+.projections-container {
+  max-width: 1200px;
+  margin: 0 auto 80px;
   position: relative;
+  z-index: 2;
 }
 
-.projections-timeline::before {
-  content: '';
-  position: absolute;
-  top: 50px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #00C853, #0D47A1);
-  opacity: 0.3;
+.projections-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
 }
 
 .timeline-item {
-  text-align: center;
-  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 25px;
+  padding: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid;
   position: relative;
-  z-index: 1;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-item:hover {
+  transform: translateY(-10px);
+  border-color: rgba(0, 200, 83, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-marker {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 4px solid #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-pulse {
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
 }
 
 .timeline-period {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 15px;
+  text-align: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timeline-main {
+  text-align: center;
+  margin-bottom: 25px;
 }
 
 .timeline-revenue {
-  font-size: 2.2rem;
+  font-size: 3rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #00C853, #0D47A1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   margin-bottom: 10px;
-}
-
-.timeline-users {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 5px 15px;
-  border-radius: 20px;
-  display: inline-block;
+  line-height: 1;
 }
 
 .timeline-description {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-  max-width: 200px;
-  margin: 0 auto;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
 }
 
-.timeline-connector {
-  margin-top: 20px;
-  height: 20px;
-  position: relative;
-}
-
-.connector-line {
-  height: 2px;
-  background: rgba(0, 200, 83, 0.3);
-  margin: 0 10px;
-}
-
-.connector-arrow {
-  position: absolute;
-  right: -15px;
-  top: -9px;
-  color: #00C853;
-  font-size: 1.2rem;
-}
-
-.milestones-grid {
+.timeline-details {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1000px;
-  margin: 0 auto;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 25px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.milestone-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.detail-item {
   display: flex;
   align-items: center;
-  gap: 20px;
-  transition: all 0.3s ease;
+  gap: 15px;
 }
 
-.milestone-card:hover {
-  border-color: rgba(0, 200, 83, 0.3);
-  transform: translateY(-5px);
-}
-
-.milestone-icon {
-  font-size: 2rem;
+.detail-icon {
+  font-size: 1.5rem;
   color: #00C853;
   background: rgba(0, 200, 83, 0.1);
-  width: 60px;
-  height: 60px;
-  border-radius: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.milestone-content {
+.detail-content {
   flex: 1;
 }
 
-.milestone-title {
+.detail-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.detail-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.timeline-focus {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  border-left: 3px solid #00C853;
+}
+
+.timeline-focus strong {
+  color: #00C853;
+  font-weight: 700;
+}
+
+.timeline-highlight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 214, 0, 0.1);
+  color: #FFD600;
+  padding: 12px 15px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 214, 0, 0.2);
+  margin-top: auto;
+}
+
+.projections-connector {
+  display: none; /* Hidden on all views, timeline stands alone */
+}
+
+.key-metrics {
+  margin-bottom: 80px;
+}
+
+.metrics-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #00C853, #0D47A1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.metrics-subtitle {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.metric-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.metric-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(0, 200, 83, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.metric-icon {
+  font-size: 3rem;
+  margin-bottom: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.metric-content {
+  text-align: center;
+}
+
+.metric-title {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
 }
 
-.milestone-value {
-  font-size: 1.5rem;
+.metric-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.metric-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 10px;
+  line-height: 1.4;
+  min-height: 40px;
+}
+
+.metric-source {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+.financial-highlights {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.highlights-content {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 25px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  backdrop-filter: blur(20px);
+}
+
+.highlights-icon {
+  font-size: 4rem;
+  color: #00C853;
+  background: rgba(0, 200, 83, 0.1);
+  width: 100px;
+  height: 100px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.highlights-text {
+  flex: 1;
+}
+
+.highlights-text h4 {
+  font-size: 1.8rem;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 
-.milestone-description {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.6);
+.highlights-text p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.highlights-text strong {
+  color: #00C853;
+  font-weight: 700;
+}
+
+.highlight-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.highlight-icon {
+  font-size: 1.2rem;
+  color: #00C853;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.highlight-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+.highlight-text strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Animation for timeline items */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timeline-item,
+.metric-card {
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.3s; }
+.timeline-item:nth-child(3) { animation-delay: 0.5s; }
+
+.metric-card:nth-child(1) { animation-delay: 0.2s; }
+.metric-card:nth-child(2) { animation-delay: 0.4s; }
+.metric-card:nth-child(3) { animation-delay: 0.6s; }
+.metric-card:nth-child(4) { animation-delay: 0.8s; }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .projections-timeline {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .highlights-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .highlight-item {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 768px) {
-  .projections-timeline {
-    flex-direction: column;
-    gap: 40px;
+  .financial-projections {
+    padding: 60px 5%;
   }
   
-  .projections-timeline::before {
-    display: none;
+  .projections-title {
+    font-size: 2.2rem;
+  }
+  
+  .projections-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .timeline-revenue {
+    font-size: 2.5rem;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .highlight-items {
+    text-align: left;
+  }
+  
+  .highlight-item {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .projections-title {
+    font-size: 1.8rem;
   }
   
   .timeline-item {
-    width: 100%;
+    padding: 25px 20px;
   }
   
-  .timeline-connector {
-    display: none;
-  }
-  
-  .milestones-grid {
+  .timeline-details {
     grid-template-columns: 1fr;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .highlights-content {
+    padding: 30px 20px;
+  }
+  
+  .highlights-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 3rem;
   }
 }

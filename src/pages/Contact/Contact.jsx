@@ -1,4 +1,4 @@
-// pages/Contact/Contact.jsx
+// pages/Contact/Contact.jsx - ENHANCED VERSION
 import React, { useState } from "react";
 import { 
   FiMail, 
@@ -8,7 +8,15 @@ import {
   FiSend,
   FiCheckCircle,
   FiClock,
-  FiUser
+  FiUser,
+  FiSmartphone,
+  FiUsers,
+  FiTarget,
+  FiDollarSign,
+  FiArrowRight,
+  FiCalendar,
+  FiShield,
+  FiBookOpen
 } from "react-icons/fi";
 import "./Contact.css";
 
@@ -17,89 +25,194 @@ function Contact() {
     name: "",
     email: "",
     phone: "",
+    businessType: "",
+    township: "",
     subject: "",
     message: ""
   });
   
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [selectedTownship, setSelectedTownship] = useState("");
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    
+    if (e.target.name === "township") {
+      setSelectedTownship(e.target.value);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend
     console.log("Form submitted:", formData);
     setIsSubmitted(true);
     
-    // Reset form after submission
     setTimeout(() => {
       setFormData({
         name: "",
         email: "",
         phone: "",
+        businessType: "",
+        township: "",
         subject: "",
         message: ""
       });
+      setSelectedTownship("");
       setIsSubmitted(false);
     }, 3000);
   };
 
-  const contactInfo = [
+  const contactChannels = [
+    {
+      icon: <FiSmartphone />,
+      title: "WhatsApp Business",
+      detail: "+27 11 234 5678",
+      subtitle: "Fastest response for township businesses",
+      color: "#25D366",
+      isPrimary: true,
+      note: "Preferred by 85% of our township clients"
+    },
     {
       icon: <FiPhone />,
-      title: "Call Us",
+      title: "Phone Support",
       detail: "+27 11 123 4567",
-      subtitle: "Mon-Fri, 8AM-6PM",
+      subtitle: "Mon-Fri, 8AM-6PM | Sat 9AM-1PM",
       color: "#00C853"
     },
     {
       icon: <FiMail />,
-      title: "Email Us",
-      detail: "info@kasi360.co.za",
+      title: "Email",
+      detail: "support@kasi360.co.za",
       subtitle: "Response within 24 hours",
       color: "#0D47A1"
     },
     {
-      icon: <FiMapPin />,
-      title: "Visit Us",
-      detail: "Johannesburg, South Africa",
-      subtitle: "By appointment only",
-      color: "#FF6D00"
+      icon: <FiUsers />,
+      title: "Community Forums",
+      detail: "Join township business groups",
+      subtitle: "Weekly meetings & peer support",
+      color: "#9C27B0",
+      link: "/community"
     }
   ];
 
-  const faqs = [
+  const townshipOptions = [
+    "Soweto", "Alexandra", "Khayelitsha", "Gugulethu", 
+    "Mamelodi", "Daveyton", "Umlazi", "Mdantsane",
+    "Other Township"
+  ];
+
+  const businessTypes = [
+    "Spaza Shop", "Hair Salon", "Restaurant/Cafe", "Clothing Store",
+    "Auto Repair", "Street Vendor", "Service Business", "Creative/Artisan",
+    "Other"
+  ];
+
+  const contactReasons = [
+    { value: "demo", label: "Book Free Township Demo", icon: <FiTarget /> },
+    { value: "digital-setup", label: "Digital Setup Help", icon: <FiSmartphone /> },
+    { value: "payments", label: "Fintech & Payment Questions", icon: <FiDollarSign /> },
+    { value: "safety", label: "Safety Features Inquiry", icon: <FiShield /> },
+    { value: "training", label: "Digital Skills Training", icon: <FiBookOpen /> },
+    { value: "partnership", label: "Partnership Opportunity", icon: <FiUsers /> }
+  ];
+
+  const townshipHubs = [
     {
-      question: "What types of businesses do you work with?",
-      answer: "We work with all types of township businesses - from spaza shops and salons to service providers and creatives."
+      name: "Soweto Digital Hub",
+      address: "123 Vilakazi Street, Orlando West, Soweto",
+      hours: "Mon-Fri: 9AM-5PM | Sat: 9AM-1PM",
+      services: ["Digital Training", "Device Setup", "Support Sessions"],
+      contact: "soweto@kasi360.co.za"
     },
     {
-      question: "How quickly can I get started?",
-      answer: "You can start using our platform within 24 hours of signing up. We offer immediate access to all digital tools."
-    },
-    {
-      question: "Is there a free trial?",
-      answer: "Yes! We offer a 14-day free trial for all our services with no credit card required."
+      name: "Khayelitsha Support Center",
+      address: "45 Ntlazane Road, Khayelitsha, Cape Town",
+      hours: "Tue-Thu: 10AM-4PM | By Appointment",
+      services: ["Mobile Setup", "Payment Assistance", "Safety Workshops"],
+      contact: "khayelitsha@kasi360.co.za"
     }
   ];
+
+  const townshipFAQs = [
+    {
+      question: "Do you offer in-person support in townships?",
+      answer: "Yes! We have township hubs in Soweto and Khayelitsha, and monthly mobile support sessions in other townships. Check our Township Support schedule."
+    },
+    {
+      question: "What if I don't have reliable internet?",
+      answer: "Our tools work with minimal data. We also offer WhatsApp-based solutions and in-person training for businesses with limited connectivity."
+    },
+    {
+      question: "Is support available in local languages?",
+      answer: "Yes! Our support team speaks Zulu, Xhosa, Sotho, and English. We provide training materials in multiple languages."
+    },
+    {
+      question: "How quickly can you set up my business digitally?",
+      answer: "Most township businesses are fully set up within 24-48 hours. We prioritize simple, mobile-first solutions that work immediately."
+    }
+  ];
+
+  const getTownshipSupportInfo = () => {
+    if (!selectedTownship) return null;
+    
+    const supportInfo = {
+      "Soweto": {
+        contactPerson: "Thabo Mokoena",
+        phone: "+27 11 234 5679",
+        nextSession: "Every Wednesday, 2PM at Soweto Hub"
+      },
+      "Khayelitsha": {
+        contactPerson: "Nomsa Dlamini",
+        phone: "+27 21 345 6789",
+        nextSession: "Every Thursday, 10AM at Khayelitsha Center"
+      },
+      "Alexandra": {
+        contactPerson: "Sipho Vilakazi",
+        phone: "+27 11 456 7890",
+        nextSession: "Monthly mobile support - check schedule"
+      }
+    };
+    
+    return supportInfo[selectedTownship] || {
+      contactPerson: "Regional Support",
+      phone: "+27 11 123 4567",
+      nextSession: "Monthly mobile support visits"
+    };
+  };
 
   return (
     <div className="contact-page">
       {/* Hero Section */}
       <section className="contact-hero">
         <div className="hero-content">
+          <div className="hero-badge">
+            <FiUsers /> Township Business Support
+          </div>
           <h1 className="hero-title">
-            Get in <span className="gradient-text">Touch</span>
+            Connect with <span className="gradient-text">Kasi360</span>
           </h1>
           <p className="hero-subtitle">
-            Ready to transform your township business? We're here to help with 
-            partnerships, support, or any questions you might have.
+            We're here to help township businesses thrive digitally. Whether you need 
+            technical support, training, or want to join our ecosystem, reach out to us.
           </p>
+          <div className="hero-stats">
+            <div className="stat">
+              <div className="stat-number">24/7</div>
+              <div className="stat-label">WhatsApp Support</div>
+            </div>
+            <div className="stat">
+              <div className="stat-number">85%</div>
+              <div className="stat-label">Township Response Rate</div>
+            </div>
+            <div className="stat">
+              <div className="stat-number">R2,000</div>
+              <div className="stat-label">Starting Investment</div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -107,24 +220,35 @@ function Contact() {
       <section className="contact-grid-section">
         <div className="section-container">
           <div className="contact-grid">
-            {/* Contact Form */}
+            {/* Enhanced Contact Form */}
             <div className="contact-form-section">
               <div className="form-header">
                 <FiMessageSquare className="form-icon" />
-                <h2>Send us a Message</h2>
-                <p>Fill out the form below and we'll get back to you promptly.</p>
+                <h2>Township Business Inquiry</h2>
+                <p>Tell us about your business and how we can help you grow digitally</p>
               </div>
               
               {isSubmitted ? (
                 <div className="success-message">
                   <FiCheckCircle className="success-icon" />
-                  <h3>Message Sent Successfully!</h3>
-                  <p>Thank you for contacting us. We'll get back to you within 24 hours.</p>
+                  <h3>Message Received!</h3>
+                  <p>
+                    Thank you for contacting Kasi360. Our township support team will 
+                    contact you within <strong>24 hours</strong>. For urgent matters, 
+                    WhatsApp us at <strong>+27 11 234 5678</strong>.
+                  </p>
+                  {selectedTownship && getTownshipSupportInfo() && (
+                    <div className="township-followup">
+                      <h4>📍 {selectedTownship} Support:</h4>
+                      <p>Contact: {getTownshipSupportInfo().contactPerson}</p>
+                      <p>Next Support Session: {getTownshipSupportInfo().nextSession}</p>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="contact-form">
                   <div className="form-group">
-                    <label htmlFor="name">Full Name *</label>
+                    <label htmlFor="name">Your Name *</label>
                     <input
                       type="text"
                       id="name"
@@ -132,84 +256,130 @@ function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      placeholder="Your name"
+                      placeholder="e.g., Thabo Mokoena"
                     />
                   </div>
                   
                   <div className="form-row">
                     <div className="form-group">
-                      <label htmlFor="email">Email Address *</label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        placeholder="your@email.com"
-                      />
-                    </div>
-                    
-                    <div className="form-group">
-                      <label htmlFor="phone">Phone Number</label>
+                      <label htmlFor="phone">Phone/WhatsApp *</label>
                       <input
                         type="tel"
                         id="phone"
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
+                        required
                         placeholder="+27 XXX XXX XXXX"
+                      />
+                      <div className="input-note">We'll primarily contact you here</div>
+                    </div>
+                    
+                    <div className="form-group">
+                      <label htmlFor="email">Email (Optional)</label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="your@email.com"
                       />
                     </div>
                   </div>
                   
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label htmlFor="businessType">Business Type *</label>
+                      <select
+                        id="businessType"
+                        name="businessType"
+                        value={formData.businessType}
+                        onChange={handleChange}
+                        required
+                      >
+                        <option value="">Select your business</option>
+                        {businessTypes.map((type, index) => (
+                          <option key={index} value={type.toLowerCase()}>{type}</option>
+                        ))}
+                      </select>
+                    </div>
+                    
+                    <div className="form-group">
+                      <label htmlFor="township">Township/Location *</label>
+                      <select
+                        id="township"
+                        name="township"
+                        value={formData.township}
+                        onChange={handleChange}
+                        required
+                      >
+                        <option value="">Select your township</option>
+                        {townshipOptions.map((township, index) => (
+                          <option key={index} value={township}>{township}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  
                   <div className="form-group">
-                    <label htmlFor="subject">Subject *</label>
-                    <select
-                      id="subject"
+                    <label>How can we help? *</label>
+                    <div className="reason-grid">
+                      {contactReasons.map((reason, index) => (
+                        <div 
+                          key={index} 
+                          className={`reason-option ${formData.subject === reason.value ? 'selected' : ''}`}
+                          onClick={() => setFormData({...formData, subject: reason.value})}
+                        >
+                          <div className="reason-icon">{reason.icon}</div>
+                          <div className="reason-label">{reason.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <input
+                      type="hidden"
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                    >
-                      <option value="">Select a topic</option>
-                      <option value="partnership">Partnership Inquiry</option>
-                      <option value="support">Technical Support</option>
-                      <option value="demo">Book a Demo</option>
-                      <option value="general">General Inquiry</option>
-                    </select>
+                    />
                   </div>
                   
                   <div className="form-group">
-                    <label htmlFor="message">Message *</label>
+                    <label htmlFor="message">Tell us more *</label>
                     <textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      placeholder="Tell us how we can help..."
+                      placeholder="What specific help do you need? Do you currently use any digital tools? How many customers do you serve?"
                       rows="6"
                     ></textarea>
                   </div>
                   
-                  <button type="submit" className="submit-btn">
-                    <FiSend /> Send Message
-                  </button>
+                  <div className="form-footer">
+                    <div className="priority-note">
+                      <FiClock /> <strong>Priority for township businesses:</strong> We respond within 24 hours
+                    </div>
+                    <button type="submit" className="submit-btn">
+                      <FiSend /> Send to Township Support Team
+                    </button>
+                  </div>
                 </form>
               )}
             </div>
 
-            {/* Contact Information */}
+            {/* Enhanced Contact Information */}
             <div className="contact-info-section">
               <div className="info-header">
-                <h2>Contact Information</h2>
-                <p>Reach out to us through any of these channels</p>
+                <h2>Multiple Ways to Connect</h2>
+                <p>Choose the method that works best for your township business</p>
               </div>
               
               <div className="info-cards">
-                {contactInfo.map((info, index) => (
-                  <div key={index} className="info-card">
+                {contactChannels.map((info, index) => (
+                  <div key={index} className={`info-card ${info.isPrimary ? 'primary' : ''}`}>
                     <div className="info-icon" style={{ color: info.color }}>
                       {info.icon}
                     </div>
@@ -217,33 +387,96 @@ function Contact() {
                       <h3>{info.title}</h3>
                       <p className="info-detail">{info.detail}</p>
                       <p className="info-subtitle">{info.subtitle}</p>
+                      {info.note && <p className="info-note">{info.note}</p>}
+                      {info.link && (
+                        <a href={info.link} className="info-link">
+                          Learn More →
+                        </a>
+                      )}
                     </div>
                   </div>
                 ))}
               </div>
               
-              <div className="business-hours">
-                <h3><FiClock /> Business Hours</h3>
-                <div className="hours-list">
-                  <div className="hour-item">
-                    <span>Monday - Friday</span>
-                    <span>8:00 AM - 6:00 PM</span>
-                  </div>
-                  <div className="hour-item">
-                    <span>Saturday</span>
-                    <span>9:00 AM - 1:00 PM</span>
-                  </div>
-                  <div className="hour-item">
-                    <span>Sunday</span>
-                    <span>Closed</span>
-                  </div>
+              {/* Township Hubs */}
+              <div className="township-hubs">
+                <h3><FiMapPin /> Township Support Hubs</h3>
+                <div className="hubs-list">
+                  {townshipHubs.map((hub, index) => (
+                    <div key={index} className="hub-card">
+                      <h4>{hub.name}</h4>
+                      <p className="hub-address">{hub.address}</p>
+                      <p className="hub-hours">{hub.hours}</p>
+                      <div className="hub-services">
+                        {hub.services.map((service, sIndex) => (
+                          <span key={sIndex} className="service-tag">{service}</span>
+                        ))}
+                      </div>
+                      <a href={`mailto:${hub.contact}`} className="hub-contact">
+                        {hub.contact}
+                      </a>
+                    </div>
+                  ))}
                 </div>
               </div>
               
-              <div className="emergency-contact">
-                <p>For urgent technical support outside business hours:</p>
-                <a href="tel:+27111234567" className="emergency-link">
-                  <FiPhone /> +27 11 123 4567 (Emergency)
+              {/* Quick Actions */}
+              <div className="quick-actions">
+                <h3><FiClock /> Quick Actions</h3>
+                <div className="action-buttons">
+                  <a href="https://wa.me/27112345678" className="action-btn whatsapp">
+                    <FiSmartphone /> WhatsApp Now
+                  </a>
+                  <a href="/demo" className="action-btn demo">
+                    <FiTarget /> Book Demo
+                  </a>
+                  <a href="/training" className="action-btn training">
+                    <FiBookOpen /> View Training
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced FAQ Section */}
+      <section className="faq-section">
+        <div className="section-container">
+          <div className="section-header center">
+            <h2>Township Business FAQs</h2>
+            <p className="section-subtitle">
+              Common questions from township entrepreneurs about digital tools and support
+            </p>
+          </div>
+          
+          <div className="faq-grid">
+            {townshipFAQs.map((faq, index) => (
+              <div key={index} className="faq-card">
+                <h3 className="faq-question">{faq.question}</h3>
+                <p className="faq-answer">{faq.answer}</p>
+                {index === 0 && (
+                  <a href="/support-schedule" className="faq-link">
+                    View Support Schedule →
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+          
+          <div className="support-schedule">
+            <div className="schedule-content">
+              <div className="schedule-icon">
+                <FiCalendar />
+              </div>
+              <div className="schedule-text">
+                <h4>Monthly Township Support Sessions</h4>
+                <p>
+                  Join our mobile support team as we visit different townships each month. 
+                  Get hands-on help with digital setup, payments, and safety features.
+                </p>
+                <a href="/support-schedule" className="schedule-link">
+                  View Full Schedule & Locations →
                 </a>
               </div>
             </div>
@@ -251,46 +484,47 @@ function Contact() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="faq-section">
-        <div className="section-container">
-          <div className="section-header center">
-            <h2>Frequently Asked Questions</h2>
-            <p className="section-subtitle">
-              Quick answers to common questions about Kasi360
-            </p>
-          </div>
-          
-          <div className="faq-grid">
-            {faqs.map((faq, index) => (
-              <div key={index} className="faq-card">
-                <h3 className="faq-question">{faq.question}</h3>
-                <p className="faq-answer">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-          
-          <div className="faq-cta">
-            <p>Still have questions? Check our full <a href="/faq">FAQ page</a> or contact us directly.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
+      {/* Enhanced CTA Section */}
       <section className="contact-cta">
         <div className="cta-container">
-          <h2>Ready to Start Your Digital Journey?</h2>
+          <div className="cta-icon">
+            <FiUsers />
+          </div>
+          <h2>Start Your Digital Transformation Today</h2>
           <p>
-            Join thousands of township businesses already thriving with Kasi360.
-            Let's build your digital future together.
+            Join thousands of township businesses already growing with Kasi360. 
+            Get started from just <strong>R2,000</strong> with our complete digital ecosystem.
           </p>
+          
+          <div className="cta-stats">
+            <div className="cta-stat">
+              <div className="stat-number">24/7</div>
+              <div className="stat-label">WhatsApp Support</div>
+            </div>
+            <div className="cta-stat">
+              <div className="stat-number">R2,000</div>
+              <div className="stat-label">Starting Cost</div>
+            </div>
+            <div className="cta-stat">
+              <div className="stat-number">18-24</div>
+              <div className="stat-label">Months to Break-even</div>
+            </div>
+          </div>
+          
           <div className="cta-buttons">
-            <a href="/demo" className="primary-btn">
-              Book a Free Demo
+            <a href="https://wa.me/27112345678" className="primary-btn whatsapp">
+              <FiSmartphone /> Chat on WhatsApp
             </a>
-            <a href="/ecosystem" className="secondary-btn">
-              Explore Our Ecosystem
+            <a href="/demo" className="secondary-btn">
+              <FiTarget /> Book Free Demo
             </a>
+            <a href="/get-started" className="text-btn">
+              Start from R2,000 <FiArrowRight />
+            </a>
+          </div>
+          
+          <div className="cta-note">
+            <FiCheckCircle /> <strong>No technical skills needed</strong> - We train you step by step
           </div>
         </div>
       </section>
@@ -298,5 +532,4 @@ function Contact() {
   );
 }
 
-// Make sure this default export exists
 export default Contact;

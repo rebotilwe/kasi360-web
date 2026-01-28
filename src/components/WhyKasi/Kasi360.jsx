@@ -2,6 +2,7 @@
 import React from "react";
 import { FiTarget, FiUsers, FiGlobe, FiAward } from "react-icons/fi";
 import "./Kasi360.css";
+import { Link } from "react-router-dom";
 
 function WhyKasi360() {
   const reasons = [
@@ -59,8 +60,10 @@ function WhyKasi360() {
         <h4>Ready to be part of the change?</h4>
         <p>Join hundreds of township businesses already transforming with Kasi360</p>
         <div className="cta-buttons">
-          <button className="primary-cta">Start Free Trial</button>
-          <button className="secondary-cta">Book a Demo</button>
+          {/* <button className="primary-cta">Start Free Trial</button> */}
+      <Link to="/demo" className="secondary-cta">
+  Book a Demo
+</Link>
         </div>
       </div>
     </div>

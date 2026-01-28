@@ -82,3 +82,7 @@ a:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: #00E676;
 }
+html, body, #root {
+  height: auto !important;
+  overflow-y: auto !important;
+}

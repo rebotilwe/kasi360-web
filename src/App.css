@@ -1,3 +1,4 @@
+/* App.css - UPDATED */
 /* ===== GLOBAL FIXES ===== */
 html, body, #root {
   height: 100%;
@@ -5,6 +6,7 @@ html, body, #root {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  position: relative;
 }
 
 body {
@@ -15,11 +17,47 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
 }
 
 #root {
   display: block;
   min-height: 100vh;
+  position: relative;
+}
+
+.app-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ===== FORCE SCROLL-TO-TOP VISIBILITY ===== */
+.scroll-to-top {
+  all: initial !important; /* Reset all styles */
+  position: fixed !important;
+  bottom: 30px !important;
+  right: 30px !important;
+  width: 60px !important;
+  height: 60px !important;
+  background: linear-gradient(135deg, #00C853, #0D47A1) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  color: white !important;
+  cursor: pointer !important;
+  z-index: 9999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 24px !important;
+  box-shadow: 0 10px 30px rgba(0, 200, 83, 0.5) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 15px 40px rgba(0, 200, 83, 0.7) !important;
 }
 
 /* ===== SWIPER FORCE VISIBLE ===== */

@@ -1,0 +1,138 @@
+.solutions-section {
+  padding: 80px 5%;
+  background: rgba(255, 255, 255, 0.01);
+  text-align: center;
+}
+
+.solutions-header h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00C853, #0D47A1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.solutions-header p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 700px;
+  margin: 0 auto 50px;
+}
+
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.solution-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 30px 25px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.solution-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.solution-card h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.solution-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.solution-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.solution-features li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.solution-btn {
+  margin-top: auto;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-weight: 700;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.solution-btn:hover {
+  background: rgba(0, 200, 83, 0.1);
+  transform: translateX(5px);
+}
+
+.demo-cta {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.demo-cta h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.demo-btn {
+  padding: 12px 35px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #00C853;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.demo-btn:hover {
+  background-color: #00E676;
+  transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .solutions-section {
+    padding: 60px 3%;
+  }
+
+  .solutions-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .solutions-header p {
+    font-size: 1rem;
+  }
+}

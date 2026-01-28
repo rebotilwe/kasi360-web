@@ -1,0 +1,98 @@
+.platform-section {
+  padding: 80px 5%;
+  background: rgba(255, 255, 255, 0.01);
+  text-align: center;
+}
+
+.platform-header h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00C853, #0D47A1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.platform-header p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 700px;
+  margin: 0 auto 50px;
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.platform-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 30px 25px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.platform-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.platform-icon {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+
+.platform-card h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.platform-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.platform-btn {
+  margin-top: auto;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-weight: 700;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  border: 2px solid;
+}
+
+.platform-btn:hover {
+  background: rgba(0, 200, 83, 0.1);
+  transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .platform-section {
+    padding: 60px 3%;
+  }
+
+  .platform-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .platform-header p {
+    font-size: 1rem;
+  }
+}

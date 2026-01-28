@@ -112,3 +112,58 @@
     grid-template-columns: 1fr;
   }
 }
+/* Add these to your existing CSS for enhanced effects */
+
+.advantage-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 200, 83, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.advantage-card:hover::before {
+  opacity: 0.5;
+}
+
+.advantage-card:hover .advantage-icon {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.advantage-card:hover .advantage-title {
+  color: inherit; /* Inherits from icon color */
+  transition: color 0.3s ease;
+}
+
+/* Add a connecting line between cards on desktop */
+@media (min-width: 769px) {
+  .advantages-grid {
+    position: relative;
+  }
+  
+  .advantages-grid::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      rgba(0, 200, 83, 0.3), 
+      rgba(13, 71, 161, 0.3), 
+      rgba(255, 109, 0, 0.3), 
+      rgba(156, 39, 176, 0.3)
+    );
+    z-index: 1;
+  }
+  
+  .advantage-card {
+    position: relative;
+    z-index: 2;
+  }
+}

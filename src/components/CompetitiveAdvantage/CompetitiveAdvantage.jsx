@@ -33,6 +33,7 @@ function CompetitiveAdvantage() {
 
   return (
     <div className="competitive-advantage">
+      
       <div className="advantages-grid">
         {advantages.map((advantage, index) => (
           <div key={index} className="advantage-card">

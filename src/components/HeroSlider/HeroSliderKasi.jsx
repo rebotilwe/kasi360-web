@@ -10,6 +10,7 @@ import "swiper/css/autoplay";
 import "./HeroSliderKasi.css";
 
 // UPDATED SLIDES WITH POWERPOINT CONTENT
+// UPDATED SLIDES WITH BUTTON LINKS
 const slides = [
   {
     id: 1,
@@ -18,6 +19,7 @@ const slides = [
     subtitle: "Technology. Access. Growth.",
     description: "The Kasi360 Ecosystem provides the tools township businesses need to thrive in the digital economy.",
     buttonText: "Explore Ecosystem",
+    buttonLink: "/ecosystem", // <-- navigate here
     accentColor: "#00C853"
   },
   {
@@ -27,6 +29,7 @@ const slides = [
     subtitle: "Built for the Township Economy",
     description: "70% of businesses in South Africa lack digital tools. We're changing that with hyperlocal solutions.",
     buttonText: "See Features",
+    buttonLink: "/features", // <-- navigate here
     accentColor: "#0D47A1"
   },
   {
@@ -36,9 +39,11 @@ const slides = [
     subtitle: "Fintech, Safety & Training",
     description: "Combining essential services in one affordable ecosystem to unlock sustainable growth.",
     buttonText: "Join Today",
+    buttonLink: "/contact", // <-- navigate here
     accentColor: "#FF6D00"
   },
 ];
+
 
 function HeroSliderKasi() {
   const [activeIndex, setActiveIndex] = useState(0);

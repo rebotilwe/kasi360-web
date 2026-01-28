@@ -8,19 +8,31 @@
   --glass-border: rgba(255, 255, 255, 0.08);
 }
 
-/* ===== NAVBAR ===== */
+/* ===== NAVBAR BASE ===== */
 .navbar {
   position: fixed;
   width: 100%;
-  top: 96px; /* Below contact bar */
+  top: 20px; /* Default for mobile/tablet (no contact bar) */
   left: 0;
   z-index: 1000;
   transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 0 24px;
+  box-sizing: border-box;
 }
 
 .navbar.scrolled {
-  top: 28px;
+  top: 10px;
+}
+
+/* ===== DESKTOP POSITIONING (with contact bar) ===== */
+@media (min-width: 1025px) {
+  .navbar {
+    top: 80px; /* Position below contact bar */
+  }
+  
+  .navbar.scrolled {
+    top: 20px; /* When scrolled, move up */
+  }
 }
 
 /* ===== CONTAINER ===== */
@@ -43,11 +55,12 @@
   border: 1px solid var(--glass-border);
   transition: all 0.45s ease, padding 0.3s ease;
   position: relative;
+  box-sizing: border-box;
 }
 
 .navbar.scrolled .nav-container {
-  padding: 10px 30px;
-  transform: scale(0.975);
+  padding: 12px 30px;
+  transform: scale(0.98);
 }
 
 /* ===== LOGO ===== */
@@ -62,6 +75,7 @@
   text-decoration: none;
   transition: 0.35s ease;
   z-index: 1003;
+  white-space: nowrap;
 }
 
 .logo span {
@@ -92,6 +106,7 @@
   position: relative;
   transition: all 0.3s ease;
   padding: 8px 0;
+  white-space: nowrap;
 }
 
 .nav-links a::after,
@@ -205,6 +220,7 @@
   letter-spacing: 0.7px;
   text-decoration: none;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
 }
 
 .partner-btn:hover {
@@ -223,6 +239,7 @@
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .demo-btn:hover {
@@ -260,25 +277,77 @@
   transform: translateY(-50%) scale(1.05);
 }
 
-/* ===== MOBILE LAYOUT ===== */
-@media (max-width: 1024px) {
-  .mobile-toggle {
-    display: flex;
-  }
+/* ===== RESPONSIVE BREAKPOINTS ===== */
 
+/* Large Tablets & Small Laptops (1024px and below) - INCLUDES NEST HUB */
+@media (max-width: 1024px) {
   .navbar {
-    top: 20px !important;
+    top: 20px !important; /* Already at top since no contact bar */
     padding: 0 16px;
   }
-
+  
+  .navbar.scrolled {
+    top: 10px !important; /* Slight adjustment when scrolled */
+  }
+  
   .nav-container {
     border-radius: 20px;
-    padding: 14px 20px;
-    min-height: 70px;
-    position: relative;
-    overflow: visible;
+    padding: 12px 20px;
+    min-height: 60px; /* Reduced height */
   }
+  
+  .logo {
+    font-size: 22px;
+  }
+  
+  .nav-links {
+    gap: 24px;
+  }
+  
+  .nav-links a,
+  .dropdown-toggle {
+    font-size: 13px;
+  }
+  
+  .partner-btn {
+    padding: 10px 24px;
+    font-size: 12px;
+  }
+  
+  .demo-btn {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+}
 
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .navbar {
+    top: 20px !important; /* Already at top since no contact bar */
+    padding: 0 12px;
+  }
+  
+  .navbar.scrolled {
+    top: 10px !important;
+  }
+  
+  .mobile-toggle {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    right: 16px;
+  }
+  
+  .nav-container {
+    padding: 10px 16px;
+    min-height: 56px;
+    border-radius: 16px;
+  }
+  
+  .logo {
+    font-size: 20px;
+  }
+  
   .nav-links {
     position: fixed;
     top: 0;
@@ -299,23 +368,23 @@
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 1001;
   }
-
+  
   .nav-links.open {
     max-height: 100vh;
     opacity: 1;
     visibility: visible;
   }
-
+  
   .nav-links > a,
   .dropdown {
     width: 100%;
     text-align: center;
-    padding: 18px 0;
+    padding: 16px 0;
   }
-
+  
   .nav-links a,
   .dropdown-toggle {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     padding: 12px 0 !important;
     width: 100%;
@@ -324,18 +393,18 @@
     justify-content: center;
     gap: 10px;
   }
-
+  
   .nav-links a::after,
   .dropdown-toggle::after {
     display: none;
   }
-
+  
   .nav-links a:hover,
   .dropdown-toggle:hover {
     color: var(--kasi-accent);
     transform: translateX(10px);
   }
-
+  
   /* Mobile dropdown */
   .dropdown-menu {
     position: relative;
@@ -352,7 +421,7 @@
     visibility: hidden;
     transition: all 0.4s ease;
   }
-
+  
   .dropdown-menu.open {
     max-height: 300px;
     opacity: 1;
@@ -360,57 +429,135 @@
     margin-top: 15px;
     margin-bottom: 10px;
   }
-
+  
   .dropdown-item {
-    padding: 16px 0;
-    font-size: 16px;
+    padding: 14px 0;
+    font-size: 15px;
   }
-
+  
   .dropdown-item:hover {
     padding-left: 0;
   }
-
+  
   .cta-group {
     display: none;
   }
-
+  
   .mobile-cta {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
     width: 100%;
-    margin-top: 30px;
-    padding-top: 30px;
+    margin-top: 24px;
+    padding-top: 24px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
-
+  
   .mobile-cta .partner-btn {
     width: 100%;
     text-align: center;
-    padding: 18px;
-    font-size: 16px;
+    padding: 16px;
+    font-size: 15px;
   }
 }
 
-/* Small mobile devices */
+/* Small mobile devices (480px and below) */
 @media (max-width: 480px) {
   .navbar {
-    padding: 0 12px;
-    top: 12px !important;
+    top: 15px !important;
+    padding: 0 10px;
   }
-
+  
+  .navbar.scrolled {
+    top: 8px !important;
+  }
+  
   .nav-container {
-    padding: 12px 16px;
-    border-radius: 18px;
+    padding: 8px 14px;
+    min-height: 52px;
+    border-radius: 14px;
   }
-
+  
   .logo {
-    font-size: 22px;
+    font-size: 18px;
   }
-
+  
   .mobile-toggle {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     right: 12px;
+    font-size: 20px;
+  }
+}
+
+/* Nest Hub Specific (1024x600 landscape) */
+@media (max-width: 1024px) and (max-height: 600px) and (orientation: landscape) {
+  .navbar {
+    top: 15px !important; /* Even smaller for Nest Hub */
+    padding: 0 12px;
+  }
+  
+  .navbar.scrolled {
+    top: 8px !important;
+  }
+  
+  .nav-container {
+    padding: 8px 16px;
+    min-height: 50px;
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+  }
+  
+  .logo {
+    font-size: 18px;
+  }
+  
+  .cta-group {
+    gap: 8px;
+  }
+  
+  .partner-btn {
+    padding: 8px 16px;
+    font-size: 11px;
+  }
+  
+  .demo-btn {
+    padding: 8px 14px;
+    font-size: 11px;
+  }
+  
+  /* Show mobile menu earlier on Nest Hub */
+  @media (max-width: 900px) {
+    .mobile-toggle {
+      display: flex;
+    }
+    
+    .nav-links {
+      display: none;
+    }
+    
+    .nav-links.open {
+      display: flex;
+    }
+    
+    .cta-group {
+      display: none;
+    }
+  }
+}
+
+/* Prevent text overflow on very small screens */
+@media (max-width: 360px) {
+  .contact-pill {
+    transform: scale(0.75);
+  }
+  
+  .logo {
+    font-size: 16px;
+  }
+  
+  .mobile-toggle {
+    width: 40px;
+    height: 40px;
   }
 }

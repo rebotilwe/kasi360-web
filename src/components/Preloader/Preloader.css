@@ -1,4 +1,4 @@
-/* Preloader.css - SIMPLIFIED */
+/* components/Preloader/Preloader.css */
 .preloader-wrapper {
   position: fixed;
   top: 0;
@@ -13,35 +13,161 @@
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
+.preloader-wrapper.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .preloader-container {
   text-align: center;
+  max-width: 500px;
+  padding: 40px;
+  width: 100%;
 }
 
 .kasi-logo {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 800;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  letter-spacing: 1px;
+}
+
+.logo-kasi {
+  color: #fff;
+}
+
+.logo-360 {
   background: linear-gradient(135deg, #00C853, #0D47A1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 2rem;
+  background-clip: text;
+}
+
+.logo-dot {
+  width: 8px;
+  height: 8px;
+  background: #FF6D00;
+  border-radius: 50%;
+  position: relative;
+  margin-top: -10px;
+}
+
+.logo-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: #FF6D00;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+  50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.1; }
+}
+
+.loading-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  height: 24px;
 }
 
 .loading-bar {
-  width: 200px;
-  height: 3px;
+  width: 100%;
+  height: 4px;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
+  border-radius: 4px;
   overflow: hidden;
+  margin-bottom: 2rem;
 }
 
 .loading-progress {
-  width: 0%;
   height: 100%;
-  background: #00C853;
-  animation: loading 2s ease-in-out forwards;
+  background: linear-gradient(90deg, #00C853, #0D47A1);
+  border-radius: 4px;
+  transition: width 0.3s ease;
 }
 
-@keyframes loading {
-  0% { width: 0%; }
-  100% { width: 100%; }
+.loading-tagline {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.loading-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 2rem;
+}
+
+.loading-stat {
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00C853;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 120px;
+  line-height: 1.3;
+}
+
+/* App.css (if you don't have one, create it) */
+.app-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Prevent scroll during preloader */
+body.preloader-active {
+  overflow: hidden;
+}
+
+/* Optional: Add smooth page transition */
+.main-content {
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .kasi-logo {
+    font-size: 3rem;
+  }
+  
+  .loading-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .loading-stat {
+    width: 200px;
+  }
 }

@@ -1,44 +1,28 @@
-/* components/ScrollToTop/ScrollToTop.css */
 .scroll-to-top {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #00C853, #0D47A1);
+  bottom: 24px;
+  right: 24px;
+
+  width: 58px;
+  height: 58px;
+
+  background: linear-gradient(135deg, #00c853, #0d47a1);
   border: none;
   border-radius: 50%;
-  color: white;
-  font-size: 1.2rem;
-  cursor: pointer;
+  color: #fff;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 1000;
-  box-shadow: 0 10px 30px rgba(0, 200, 83, 0.3);
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 0.3s ease forwards;
-}
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  cursor: pointer;
+  z-index: 2147483647;
+  pointer-events: auto;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .scroll-to-top:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 200, 83, 0.4);
-}
-
-@media (max-width: 768px) {
-  .scroll-to-top {
-    bottom: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
-  }
+  transform: scale(1.08);
 }

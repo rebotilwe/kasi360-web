@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FiCheck, FiArrowRight, FiTarget, FiTrendingUp, FiUsers } from "react-icons/fi";
-// import "./Marketing.css";
+import "./Marketing.css";
 
 function Marketing() {
   return (
