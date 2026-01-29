@@ -135,28 +135,28 @@ Priority: ${selectedTownship ? 'Township Business - High Priority' : 'Standard'}
     {
       icon: <FiSmartphone />,
       title: "WhatsApp Business",
-      detail: "+27 11 234 5678",
+      detail: "+27 65 332 1150",
       subtitle: "Fastest response for township businesses",
       color: "#25D366",
       isPrimary: true,
       note: "Preferred by 85% of our township clients",
-      whatsappLink: "https://wa.me/27112345678?text=Hi%20Kasi360%2C%20I'm%20interested%20in%20your%20services%20for%20my%20township%20business"
+      whatsappLink: "https://wa.me/+27 65 332 1150?text=Hi%20Kasi360%2C%20I'm%20interested%20in%20your%20services%20for%20my%20township%20business"
     },
     {
       icon: <FiPhone />,
       title: "Phone Support",
-      detail: "+27 11 123 4567",
+      detail: "+27 65 332 1150",
       subtitle: "Mon-Fri, 8AM-6PM | Sat 9AM-1PM",
       color: "#00C853",
-      telLink: "tel:+27111234567"
+      telLink: "tel:+27 65 332 1150"
     },
     {
       icon: <FiMail />,
       title: "Email",
-      detail: "support@kasi360.co.za",
+      detail: "info@kasidigitalconnect.co.za",
       subtitle: "Response within 24 hours",
       color: "#0D47A1",
-      mailLink: "mailto:support@kasi360.co.za?subject=Kasi360%20Inquiry&body=Hi%20Kasi360%20Team%2C%0A%0AI'm%20interested%20in%20your%20services..."
+      mailLink: "mailto:info@kasidigitalconnect.co.za.co.za?subject=Kasi360%20Inquiry&body=Hi%20Kasi360%20Team%2C%0A%0AI'm%20interested%20in%20your%20services..."
     },
     {
       icon: <FiUsers />,
@@ -231,24 +231,24 @@ Priority: ${selectedTownship ? 'Township Business - High Priority' : 'Standard'}
     const supportInfo = {
       "Soweto": {
         contactPerson: "Thabo Mokoena",
-        phone: "+27 11 234 5679",
+        phone: "+27 65 332 1150",
         nextSession: "Every Wednesday, 2PM at Soweto Hub"
       },
       "Khayelitsha": {
         contactPerson: "Nomsa Dlamini",
-        phone: "+27 21 345 6789",
+        phone: "+27 65 332 1150",
         nextSession: "Every Thursday, 10AM at Khayelitsha Center"
       },
       "Alexandra": {
         contactPerson: "Sipho Vilakazi",
-        phone: "+27 11 456 7890",
+        phone: "+27 65 332 1150",
         nextSession: "Monthly mobile support - check schedule"
       }
     };
     
     return supportInfo[selectedTownship] || {
       contactPerson: "Regional Support",
-      phone: "+27 11 123 4567",
+      phone: "+27 65 332 1150",
       nextSession: "Monthly mobile support visits"
     };
   };
@@ -272,7 +272,7 @@ Priority: ${selectedTownship ? 'Township Business - High Priority' : 'Standard'}
           <p>
             Thank you for contacting Kasi360. Our township support team will 
             contact you within <strong>24 hours</strong>. For urgent matters, 
-            WhatsApp us at <strong>+27 11 234 5678</strong>.
+            WhatsApp us at <strong>+27 65 332 1150</strong>.
           </p>
           {selectedTownship && getTownshipSupportInfo() && (
             <div className="township-followup">
@@ -284,7 +284,7 @@ Priority: ${selectedTownship ? 'Township Business - High Priority' : 'Standard'}
           )}
           <div className="whatsapp-fallback">
             <a 
-              href="https://wa.me/27112345678" 
+              href="https://wa.me/+27 65 332 1150" 
               className="whatsapp-link"
               target="_blank"
               rel="noopener noreferrer"
@@ -304,7 +304,7 @@ Priority: ${selectedTownship ? 'Township Business - High Priority' : 'Standard'}
           <p>{formStatus.errorMessage}</p>
           <div className="alternative-actions">
             <a 
-              href="https://wa.me/27112345678" 
+              href="https://wa.me/+27 65 332 1150" 
               className="whatsapp-btn"
               target="_blank"
               rel="noopener noreferrer"
@@ -607,7 +607,7 @@ Priority: ${selectedTownship ? 'Township Business - High Priority' : 'Standard'}
                 <h3><FiClock /> Quick Actions</h3>
                 <div className="action-buttons">
                   <a 
-                    href="https://wa.me/27112345678" 
+                    href="https://wa.me/+27 65 332 1150" 
                     className="action-btn whatsapp"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -700,7 +700,7 @@ Priority: ${selectedTownship ? 'Township Business - High Priority' : 'Standard'}
           
           <div className="cta-buttons">
             <a 
-              href="https://wa.me/27112345678" 
+              href="https://wa.me/+27 65 332 1150" 
               className="primary-btn whatsapp"
               target="_blank"
               rel="noopener noreferrer"

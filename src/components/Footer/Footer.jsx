@@ -146,7 +146,7 @@ function Footer() {
                 <FiPhone className="contact-icon" />
                 <div>
                   <span className="contact-label">Phone</span>
-                  <span className="contact-detail">+27 11 123 4567</span>
+                  <span className="contact-detail">+27 65 332 1150</span>
                 </div>
               </div>
               
@@ -154,7 +154,7 @@ function Footer() {
                 <FiMail className="contact-icon" />
                 <div>
                   <span className="contact-label">Email</span>
-                  <span className="contact-detail">info@kasi360.co.za</span>
+                  <span className="contact-detail">info@kasidigitalconnect.co.za</span>
                 </div>
               </div>
             </div>
