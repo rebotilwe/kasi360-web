@@ -16,12 +16,12 @@ function ContactBar() {
         {/* Contact items */}
         <span className="contact-item phone">
           <FiPhone />
-          +27 11 123 4567
+         +27 65 332 1150
         </span>
 
         <span className="contact-item email">
           <FiMail />
-          info@kasi360.co.za
+        info@kasidigitalconnect.co.za
         </span>
 
         <span className="contact-item location">
