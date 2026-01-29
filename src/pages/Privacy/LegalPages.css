@@ -1,45 +1,111 @@
 .legal-page {
   max-width: 900px;
   margin: 80px auto;
-  padding: 0 20px;
+  padding: 0 20px 40px;
   color: #333;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+.legal-header {
+  border-bottom: 2px solid #00C853;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .legal-page h1 {
-  font-size: 2.2rem;
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
   color: #00C853;
 }
 
+.last-updated {
+  color: #666;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.intro {
+  font-size: 1.1rem;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
 .legal-page h2 {
-  font-size: 1.6rem;
-  margin-top: 25px;
+  font-size: 1.5rem;
+  margin-top: 30px;
   margin-bottom: 15px;
   color: #0D47A1;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+.legal-page h3 {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  color: #333;
 }
 
 .legal-page p {
   font-size: 1rem;
-  line-height: 1.6;
   margin-bottom: 15px;
 }
 
-.legal-page ul {
-  margin-left: 20px;
-  margin-bottom: 15px;
+.legal-page ul, .legal-page ol {
+  margin-left: 25px;
+  margin-bottom: 20px;
 }
 
 .legal-page li {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  padding-left: 5px;
+}
+
+.legal-page strong {
+  color: #0D47A1;
 }
 
 .legal-page a {
   color: #FF6D00;
-  text-decoration: underline;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .legal-page a:hover {
   color: #00C853;
+  text-decoration: underline;
 }
 
+.legal-footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.company-reg {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 5px;
+  font-family: monospace;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .legal-page {
+    margin: 60px auto;
+    padding: 0 15px;
+  }
+  
+  .legal-page h1 {
+    font-size: 2rem;
+  }
+  
+  .legal-page h2 {
+    font-size: 1.3rem;
+  }
+}

@@ -1,4 +1,4 @@
-// pages/Services/Services.jsx
+// pages/Services/Services.jsx - UPDATED VERSION
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -18,9 +18,9 @@ import "./Services.css";
 function Services() {
   const services = [
     {
-      id: "marketing",
+      id: "marketing",  // Changed from "marketing" to match route
       icon: <FiTarget />,
-      title: "KasiMarketing",
+      title: "marketing",
       subtitle: "Hyperlocal Digital Marketing",
       description: "Reach more customers in your township with targeted digital marketing solutions designed for local businesses.",
       color: "#00C853",
@@ -37,10 +37,11 @@ function Services() {
         { icon: <FiUsers />, text: "Connect with your community" },
         { icon: <FiBarChart />, text: "Track campaign performance" }
       ],
-      pricing: "From R499/month"
+      pricing: "From R499/month",
+      route: "/services/marketing"  // Added explicit route
     },
     {
-      id: "storefront",
+      id: "storefront",  // Keep as is - matches the page I created
       icon: <FiShoppingCart />,
       title: "Digital Storefront",
       subtitle: "Complete E-commerce Platform",
@@ -59,10 +60,11 @@ function Services() {
         { icon: <FiSmartphone />, text: "Mobile-friendly design" },
         { icon: <FiBarChart />, text: "Real-time sales tracking" }
       ],
-      pricing: "From R799/month"
+      pricing: "From R799/month",
+      route: "/services/storefront"  // Added explicit route
     },
     {
-      id: "payments",
+      id: "payments",  // Keep as is - matches the page I created
       icon: <FiCreditCard />,
       title: "KasiPay",
       subtitle: "Fintech Solutions",
@@ -81,10 +83,11 @@ function Services() {
         { icon: <FiCreditCard />, text: "Multiple payment options" },
         { icon: <FiBarChart />, text: "Financial insights" }
       ],
-      pricing: "2.9% + R2 per transaction"
+      pricing: "2.9% + R2 per transaction",
+      route: "/services/payments"  // Added explicit route
     },
     {
-      id: "training",
+      id: "training",  // Keep as is - matches the page I created
       icon: <FiUsers />,
       title: "Training & Support",
       subtitle: "Business Growth Programs",
@@ -103,7 +106,8 @@ function Services() {
         { icon: <FiCheck />, text: "Practical skills" },
         { icon: <FiTrendingUp />, text: "Sustainable growth" }
       ],
-      pricing: "From R299/month"
+      pricing: "From R299/month",
+      route: "/services/training"  // Added explicit route
     }
   ];
 
@@ -186,7 +190,8 @@ function Services() {
                 </div>
                 
                 <div className="service-actions">
-                  <Link to={`/services/${service.id}`} className="primary-action">
+                  {/* UPDATED: Now uses the service.route property */}
+                  <Link to={service.route} className="primary-action">
                     Learn More <FiArrowRight />
                   </Link>
                   <Link to="/demo" className="secondary-action">
@@ -253,11 +258,13 @@ function Services() {
               <div className="footer-cell feature"></div>
               <div className="footer-cell">
                 <div className="price">From R499/mo</div>
-                <Link to="/contact" className="plan-btn">Get Started</Link>
+                {/* UPDATED: Changed to /pricing for the Pricing page I created */}
+                <Link to="/pricing" className="plan-btn">Get Started</Link>
               </div>
               <div className="footer-cell">
                 <div className="price">From R899/mo</div>
-                <Link to="/contact" className="plan-btn recommended">Popular</Link>
+                {/* UPDATED: Changed to /pricing for the Pricing page I created */}
+                <Link to="/pricing" className="plan-btn recommended">Popular</Link>
               </div>
               <div className="footer-cell">
                 <div className="price">Custom Pricing</div>
@@ -278,8 +285,9 @@ function Services() {
               services for your business needs.
             </p>
             <div className="cta-buttons">
-              <Link to="/assessment" className="primary-btn">
-                Take Free Assessment
+              {/* You can create an Assessment page or use /contact for now */}
+              <Link to="/contact" className="primary-btn">
+                Get Personalized Recommendations
               </Link>
               <Link to="/contact" className="secondary-btn">
                 Talk to Our Team
@@ -287,7 +295,6 @@ function Services() {
             </div>
           </div>
           <div className="cta-image">
-            {/* Add illustration here */}
             <div className="illustration-placeholder">
               <span>Personalized Service Recommendations</span>
             </div>

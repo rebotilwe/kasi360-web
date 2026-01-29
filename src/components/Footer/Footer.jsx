@@ -34,8 +34,7 @@ function Footer() {
   const resources = [
     { label: "Success Stories", path: "/resources/stories" },
     { label: "Business Guides", path: "/resources/guides" },
-    { label: "Research & Reports", path: "/resources/research" },
-    { label: "FAQ", path: "/resources/faq" }
+    { label: "FAQ", path: "/impact" }
   ];
 
   const socialLinks = [
@@ -43,6 +42,15 @@ function Footer() {
     { icon: <FiTwitter />, label: "Twitter", url: "https://twitter.com/kasi360" },
     { icon: <FiInstagram />, label: "Instagram", url: "https://instagram.com/kasi360" },
     { icon: <FiLinkedin />, label: "LinkedIn", url: "https://linkedin.com/company/kasi360" }
+  ];
+
+  // Updated partners to match the screenshot
+  const partners = [
+    { name: "Gauteng Province" },
+    { name: "DTI" },
+    { name: "Local Municipality" },
+    { name: "SEDMA" },
+    { name: "Municipalities" }
   ];
 
   return (
@@ -84,7 +92,7 @@ function Footer() {
               <ul>
                 {quickLinks.map((link, index) => (
                   <li key={index}>
-                    <Link to={link.path}>
+                    <Link to={link.path} className="footer-link">
                       <FiArrowRight className="link-arrow" />
                       {link.label}
                     </Link>
@@ -98,7 +106,7 @@ function Footer() {
               <ul>
                 {services.map((service, index) => (
                   <li key={index}>
-                    <Link to={service.path}>
+                    <Link to={service.path} className="footer-link">
                       <FiArrowRight className="link-arrow" />
                       {service.label}
                     </Link>
@@ -112,7 +120,7 @@ function Footer() {
               <ul>
                 {resources.map((resource, index) => (
                   <li key={index}>
-                    <Link to={resource.path}>
+                    <Link to={resource.path} className="footer-link">
                       <FiArrowRight className="link-arrow" />
                       {resource.label}
                     </Link>
@@ -183,11 +191,13 @@ function Footer() {
 
           <div className="partners">
             <h5>Our Partners</h5>
-            <div className="partner-logos">
-              <div className="partner-logo">Gauteng Province</div>
-              <div className="partner-logo">DTI</div>
-              <div className="partner-logo">SEDA</div>
-              <div className="partner-logo">Local Municipalities</div>
+            <div className="partners-list">
+              {partners.map((partner, index) => (
+                <React.Fragment key={index}>
+                  <span className="partner-name">{partner.name}</span>
+                  {index < partners.length - 1 && <span className="partner-separator">•</span>}
+                </React.Fragment>
+              ))}
             </div>
           </div>
         </div>
@@ -198,6 +208,7 @@ function Footer() {
         <div className="footer-container">
           <div className="copyright">
             <p>&copy; {currentYear} Kasi360. All rights reserved.</p>
+            <p className="company-reg">KASI DIGITAL CONNECT (PTY) LTD (2025/516387/07)</p>
             <p>Empowering Township SMEs through Digital Innovation</p>
           </div>
 

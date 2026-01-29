@@ -17,6 +17,7 @@ import {
   FiStar
 } from "react-icons/fi";
 import "./Demo.css";
+import { Link } from "react-router-dom";
 
 function Demo() {
   const [formData, setFormData] = useState({
@@ -471,9 +472,13 @@ function Demo() {
                         <button type="button" onClick={prevStep} className="back-btn">
                           ← Back
                         </button>
-                        <button type="submit" className="submit-btn">
-                          <FiCalendar /> Book My Free Demo
-                        </button>
+<Link to="/contact" className="cta-link">
+  <button type="button" className="cta-button">
+    Book Your Demo Now <FiArrowRight />
+  </button>
+</Link>
+
+
                       </div>
 
                       <p className="form-note">
@@ -579,9 +584,12 @@ function Demo() {
               <div className="cta-stat-label">Satisfaction rate</div>
             </div>
           </div>
-          <button className="cta-button" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-            Book Your Demo Now <FiArrowRight />
-          </button>
+       <Link to="/contact" className="cta-link">
+  <button type="button" className="cta-button">
+    Book Your Demo Now <FiArrowRight />
+  </button>
+</Link>
+
         </div>
       </section>
     </div>

@@ -25,6 +25,13 @@ import Demo from "./pages/Demo/Demo";
 import Terms from "./pages/Terms/Terms";
 import Privacy from "./pages/Privacy/Privacy";
 
+// NEW PAGES - Added imports
+
+import Payments from "./pages/Services/Payments"; // New Payments page
+import Pricing from "./pages/Pricing/Pricing"; // New Pricing page
+import Partner from "./pages/Partner/Partner"; // New Partner page
+import Careers from "./pages/Careers/Careers"; // New Careers page
+
 // Preloader Component
 import Preloader from "./components/Preloader/Preloader";
 
@@ -52,7 +59,7 @@ function App() {
   }, []);
 
   return (
-    <div className="app-container">
+   <div className="app-container">
       {/* Preloader */}
       {!showContent && <Preloader loading={loading} />}
 
@@ -78,6 +85,15 @@ function App() {
               <Route path="/solutions" element={<Solutions />} />
               <Route path="/platform" element={<Platform />} />
               <Route path="/services" element={<Services />} />
+              
+              {/* NEW SERVICE PAGES - Added routes */}
+          
+              <Route path="/services/payments" element={<Payments />} />
+              
+              {/* NEW PAGES - Added routes */}
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/partner" element={<Partner />} />
+              <Route path="/careers" element={<Careers />} />
 
               {/* Resources Pages */}
               <Route path="/blog" element={<Blog />} />

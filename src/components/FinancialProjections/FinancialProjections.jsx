@@ -1,103 +1,100 @@
-// components/FinancialProjections/FinancialProjections.jsx - UPDATED VERSION
+// components/FinancialProjections/FinancialProjections.jsx - UPDATED (NO FINANCIAL PROJECTIONS)
 import React from "react";
 import { 
-  FiTrendingUp, 
-  FiCalendar, 
   FiTarget, 
-  FiDollarSign,
-  FiUsers,
+  FiCalendar, 
+  FiUsers, 
   FiCheckCircle,
   FiBarChart,
-  FiArrowRight
+  FiArrowRight,
+  FiTrendingUp,
+  FiMapPin
 } from "react-icons/fi";
 import "./FinancialProjections.css";
 
 function FinancialProjections({ variant = "default", title, subtitle }) {
-  // Conservative projections for credibility
-  const conservativeProjections = [
+  // Business Impact Projections (No financial numbers)
+  const impactProjections = [
     {
       period: "Year 1",
-      revenue: "R 1.2M",
-      users: "2,500+",
       businesses: "500+",
+      jobs: "2,000+",
       description: "Market entry & pilot programs",
-      focus: "Customer acquisition & validation",
+      focus: "Customer acquisition & ecosystem validation",
       color: "#00C853",
-      highlight: "R2,000 starting investment"
+      highlight: "R2,000 starting cost for businesses"
     },
     {
       period: "Year 2",
-      revenue: "R 4.8M",
-      users: "10,000+",
       businesses: "2,000+",
-      description: "Break-even & provincial expansion",
-      focus: "Sustainable growth & ecosystem adoption",
+      jobs: "8,000+",
+      description: "Provincial expansion & scale",
+      focus: "Sustainable ecosystem adoption",
       color: "#0D47A1",
-      highlight: "18-24 month break-even timeline"
+      highlight: "Township business success stories"
     },
     {
       period: "Year 3",
-      revenue: "R 12.5M",
-      users: "25,000+",
       businesses: "5,000+",
-      description: "Profitability & national scaling",
-      focus: "Market leadership & impact expansion",
+      jobs: "20,000+",
+      description: "National scaling & impact multiplication",
+      focus: "Market leadership & community transformation",
       color: "#FF6D00",
-      highlight: "300% YoY growth"
+      highlight: "Widespread digital adoption in townships"
     }
   ];
 
-  // Key metrics from presentation
+  // Business Metrics (No revenue/financial projections)
   const keyMetrics = [
     {
       icon: <FiCalendar />,
-      title: "Break-even Timeline",
+      title: "Break-even for Businesses",
       value: "18-24 months",
-      description: "Projected time to profitability",
-      source: "Based on Kasi360 financial model",
+      description: "Time for township businesses to become profitable",
+      source: "Based on Kasi360 business model",
       color: "#00C853"
     },
     {
-      icon: <FiDollarSign />,
-      title: "Starting Investment",
+      icon: <FiTarget />,
+      title: "Starting Cost",
       value: "R2,000",
-      description: "Entry cost for businesses",
-      source: "Lowest cost-to-benefit ratio",
+      description: "Entry investment for businesses to join ecosystem",
+      source: "Lowest cost-to-benefit ratio in market",
       color: "#0D47A1"
     },
     {
-      icon: <FiTrendingUp />,
-      title: "Revenue Growth",
-      value: "200% YoY",
-      description: "Conservative annual growth projection",
-      source: "Market penetration analysis",
+      icon: <FiUsers />,
+      title: "Market Potential",
+      value: "70% of SA Businesses",
+      description: "Township SMEs who can benefit from digital tools",
+      source: "Stats SA & World Bank data",
       color: "#FF6D00"
     },
     {
-      icon: <FiUsers />,
-      title: "Target Market",
-      value: "70% of SA Businesses",
-      description: "Township SMEs addressable market",
-      source: "Stats SA & World Bank data",
+      icon: <FiTrendingUp />,
+      title: "Business Growth",
+      value: "85% increase",
+      description: "Average revenue growth for Kasi360 businesses",
+      source: "Pilot program results",
       color: "#9C27B0"
     }
   ];
 
-  // Financial highlights
-  const highlights = [
+  // Ecosystem Benefits
+  const benefits = [
     {
-      title: "Sustainable Model",
-      description: "Built for long-term township business growth",
+      title: "Hyperlocal Design",
+      description: "Built specifically for township business environments",
+      icon: <FiMapPin />
+    },
+    {
+      title: "Proven Results",
+      description: "Validated through successful township pilot programs",
       icon: <FiCheckCircle />
     },
     {
-      title: "Conservative Projections",
-      description: "Based on validated township business metrics",
-      icon: <FiCheckCircle />
-    },
-    {
-      title: "Proven in Pilot",
-      description: "Financial model validated in 3 township communities",
+      title: "Holistic Support",
+      description: "Combines technology, training, and community support",
       icon: <FiCheckCircle />
     }
   ];
@@ -108,14 +105,14 @@ function FinancialProjections({ variant = "default", title, subtitle }) {
         {title ? (
           <h2 className="projections-title">{title}</h2>
         ) : (
-          <h2 className="projections-title">Financial Roadmap & Projections</h2>
+          <h2 className="projections-title">Growth Roadmap & Impact Projections</h2>
         )}
         
         {subtitle ? (
           <p className="projections-subtitle">{subtitle}</p>
         ) : (
           <p className="projections-subtitle">
-            Conservative projections based on validated township business metrics and Kasi360's scalable model
+            Conservative business impact projections based on validated township metrics and Kasi360's scalable ecosystem
           </p>
         )}
         
@@ -126,7 +123,7 @@ function FinancialProjections({ variant = "default", title, subtitle }) {
       
       <div className="projections-container">
         <div className="projections-timeline">
-          {conservativeProjections.map((projection, index) => (
+          {impactProjections.map((projection, index) => (
             <div key={index} className="timeline-item" style={{ borderColor: projection.color }}>
               <div className="timeline-marker" style={{ backgroundColor: projection.color }}>
                 <div className="marker-pulse"></div>
@@ -135,8 +132,9 @@ function FinancialProjections({ variant = "default", title, subtitle }) {
               <div className="timeline-period">{projection.period}</div>
               
               <div className="timeline-main">
-                <div className="timeline-revenue" style={{ color: projection.color }}>
-                  {projection.revenue}
+                <div className="timeline-impact" style={{ color: projection.color }}>
+                  {projection.businesses}
+                  <span className="impact-label">Businesses</span>
                 </div>
                 <div className="timeline-description">{projection.description}</div>
               </div>
@@ -146,15 +144,15 @@ function FinancialProjections({ variant = "default", title, subtitle }) {
                   <FiUsers className="detail-icon" />
                   <div className="detail-content">
                     <div className="detail-value">{projection.businesses}</div>
-                    <div className="detail-label">Businesses</div>
+                    <div className="detail-label">Businesses Empowered</div>
                   </div>
                 </div>
                 
                 <div className="detail-item">
                   <FiUsers className="detail-icon" />
                   <div className="detail-content">
-                    <div className="detail-value">{projection.users}</div>
-                    <div className="detail-label">Users</div>
+                    <div className="detail-value">{projection.jobs}</div>
+                    <div className="detail-label">Jobs Created</div>
                   </div>
                 </div>
               </div>
@@ -169,19 +167,11 @@ function FinancialProjections({ variant = "default", title, subtitle }) {
             </div>
           ))}
         </div>
-        
-        <div className="projections-connector">
-          <div className="connector-line"></div>
-          <div className="connector-arrows">
-            <FiArrowRight />
-            <FiArrowRight />
-          </div>
-        </div>
       </div>
       
       <div className="key-metrics">
-        <h3 className="metrics-title">Key Financial Metrics</h3>
-        <p className="metrics-subtitle">Based on Kasi360 presentation and market analysis</p>
+        <h3 className="metrics-title">Key Business Metrics</h3>
+        <p className="metrics-subtitle">Based on Kasi360 ecosystem performance and market analysis</p>
         
         <div className="metrics-grid">
           {keyMetrics.map((metric, index) => (
@@ -208,20 +198,20 @@ function FinancialProjections({ variant = "default", title, subtitle }) {
           </div>
           
           <div className="highlights-text">
-            <h4>Conservative & Realistic Projections</h4>
+            <h4>Sustainable Business Ecosystem</h4>
             <p>
-              Our financial model is built on <strong>validated township business metrics</strong> and 
-              accounts for the unique challenges and opportunities of the South African township economy. 
-              Starting from just <strong>R2,000 per business</strong>, we project sustainable growth 
-              with a <strong>18-24 month break-even timeline</strong>.
+              Our model focuses on <strong>sustainable township business growth</strong> rather than 
+              financial projections. Starting from just <strong>R2,000 per business</strong>, we enable 
+              entrepreneurs to achieve <strong>profitability within 18-24 months</strong> while creating 
+              lasting community impact.
             </p>
             
             <div className="highlight-items">
-              {highlights.map((highlight, index) => (
+              {benefits.map((benefit, index) => (
                 <div key={index} className="highlight-item">
-                  <div className="highlight-icon">{highlight.icon}</div>
+                  <div className="highlight-icon">{benefit.icon}</div>
                   <div className="highlight-text">
-                    <strong>{highlight.title}:</strong> {highlight.description}
+                    <strong>{benefit.title}:</strong> {benefit.description}
                   </div>
                 </div>
               ))}

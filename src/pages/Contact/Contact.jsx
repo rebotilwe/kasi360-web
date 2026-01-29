@@ -1,4 +1,3 @@
-// pages/Contact/Contact.jsx - ENHANCED VERSION
 import React, { useState } from "react";
 import { 
   FiMail, 
@@ -16,7 +15,9 @@ import {
   FiArrowRight,
   FiCalendar,
   FiShield,
-  FiBookOpen
+  FiBookOpen,
+  FiLoader,
+  FiAlertCircle
 } from "react-icons/fi";
 import "./Contact.css";
 
@@ -31,7 +32,13 @@ function Contact() {
     message: ""
   });
   
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formStatus, setFormStatus] = useState({
+    isSubmitting: false,
+    isSubmitted: false,
+    isError: false,
+    errorMessage: ""
+  });
+  
   const [selectedTownship, setSelectedTownship] = useState("");
 
   const handleChange = (e) => {
@@ -45,24 +52,83 @@ function Contact() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true);
-    
-    setTimeout(() => {
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        businessType: "",
-        township: "",
-        subject: "",
-        message: ""
+    setFormStatus({
+      isSubmitting: true,
+      isSubmitted: false,
+      isError: false,
+      errorMessage: ""
+    });
+
+    try {
+      const response = await fetch("https://formspree.io/f/mjknolla", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          _subject: `New Contact from Kasi360: ${formData.subject || formData.businessType}`,
+          _replyto: formData.email || formData.phone,
+          _format: "plain",
+          _cc: formData.email,
+          // Additional metadata for Formspree
+          _source: "kasi360-website",
+          _timestamp: new Date().toISOString(),
+          // Formatted message for better readability
+          formattedMessage: `
+Name: ${formData.name}
+Phone/WhatsApp: ${formData.phone}
+Email: ${formData.email}
+Business Type: ${formData.businessType}
+Township: ${formData.township}
+Subject: ${formData.subject || 'Not specified'}
+
+Message:
+${formData.message}
+
+--- Township Support Info ---
+Selected Township: ${selectedTownship}
+Priority: ${selectedTownship ? 'Township Business - High Priority' : 'Standard'}
+          `
+        }),
       });
-      setSelectedTownship("");
-      setIsSubmitted(false);
-    }, 3000);
+
+      if (response.ok) {
+        setFormStatus({
+          isSubmitting: false,
+          isSubmitted: true,
+          isError: false,
+          errorMessage: ""
+        });
+        
+        // Reset form after successful submission
+        setTimeout(() => {
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            businessType: "",
+            township: "",
+            subject: "",
+            message: ""
+          });
+          setSelectedTownship("");
+        }, 3000);
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setFormStatus({
+        isSubmitting: false,
+        isSubmitted: false,
+        isError: true,
+        errorMessage: "There was an error sending your message. Please try again or use WhatsApp directly."
+      });
+    }
   };
 
   const contactChannels = [
@@ -73,21 +139,24 @@ function Contact() {
       subtitle: "Fastest response for township businesses",
       color: "#25D366",
       isPrimary: true,
-      note: "Preferred by 85% of our township clients"
+      note: "Preferred by 85% of our township clients",
+      whatsappLink: "https://wa.me/27112345678?text=Hi%20Kasi360%2C%20I'm%20interested%20in%20your%20services%20for%20my%20township%20business"
     },
     {
       icon: <FiPhone />,
       title: "Phone Support",
       detail: "+27 11 123 4567",
       subtitle: "Mon-Fri, 8AM-6PM | Sat 9AM-1PM",
-      color: "#00C853"
+      color: "#00C853",
+      telLink: "tel:+27111234567"
     },
     {
       icon: <FiMail />,
       title: "Email",
       detail: "support@kasi360.co.za",
       subtitle: "Response within 24 hours",
-      color: "#0D47A1"
+      color: "#0D47A1",
+      mailLink: "mailto:support@kasi360.co.za?subject=Kasi360%20Inquiry&body=Hi%20Kasi360%20Team%2C%0A%0AI'm%20interested%20in%20your%20services..."
     },
     {
       icon: <FiUsers />,
@@ -184,6 +253,224 @@ function Contact() {
     };
   };
 
+  const renderFormState = () => {
+    if (formStatus.isSubmitting) {
+      return (
+        <div className="submitting-message">
+          <FiLoader className="loading-icon" />
+          <h3>Sending your message...</h3>
+          <p>Please wait while we submit your inquiry to our township support team.</p>
+        </div>
+      );
+    }
+
+    if (formStatus.isSubmitted) {
+      return (
+        <div className="success-message">
+          <FiCheckCircle className="success-icon" />
+          <h3>Message Received!</h3>
+          <p>
+            Thank you for contacting Kasi360. Our township support team will 
+            contact you within <strong>24 hours</strong>. For urgent matters, 
+            WhatsApp us at <strong>+27 11 234 5678</strong>.
+          </p>
+          {selectedTownship && getTownshipSupportInfo() && (
+            <div className="township-followup">
+              <h4>📍 {selectedTownship} Support:</h4>
+              <p><strong>Contact:</strong> {getTownshipSupportInfo().contactPerson}</p>
+              <p><strong>Phone:</strong> {getTownshipSupportInfo().phone}</p>
+              <p><strong>Next Support Session:</strong> {getTownshipSupportInfo().nextSession}</p>
+            </div>
+          )}
+          <div className="whatsapp-fallback">
+            <a 
+              href="https://wa.me/27112345678" 
+              className="whatsapp-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FiSmartphone /> Message us on WhatsApp for immediate response
+            </a>
+          </div>
+        </div>
+      );
+    }
+
+    if (formStatus.isError) {
+      return (
+        <div className="error-message">
+          <FiAlertCircle className="error-icon" />
+          <h3>Message Failed to Send</h3>
+          <p>{formStatus.errorMessage}</p>
+          <div className="alternative-actions">
+            <a 
+              href="https://wa.me/27112345678" 
+              className="whatsapp-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FiSmartphone /> Contact via WhatsApp Instead
+            </a>
+            <button 
+              onClick={() => setFormStatus({...formStatus, isError: false})}
+              className="retry-btn"
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <form onSubmit={handleSubmit} className="contact-form">
+        <div className="form-group">
+          <label htmlFor="name">Your Name *</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            placeholder="e.g., Thabo Mokoena"
+            disabled={formStatus.isSubmitting}
+          />
+        </div>
+        
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="phone">Phone/WhatsApp *</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+              placeholder="+27 XXX XXX XXXX"
+              disabled={formStatus.isSubmitting}
+            />
+            <div className="input-note">We'll primarily contact you here</div>
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="email">Email (Optional)</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="your@email.com"
+              disabled={formStatus.isSubmitting}
+            />
+          </div>
+        </div>
+        
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="businessType">Business Type *</label>
+            <select
+              id="businessType"
+              name="businessType"
+              value={formData.businessType}
+              onChange={handleChange}
+              required
+              disabled={formStatus.isSubmitting}
+            >
+              <option value="">Select your business</option>
+              {businessTypes.map((type, index) => (
+                <option key={index} value={type.toLowerCase()}>{type}</option>
+              ))}
+            </select>
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="township">Township/Location *</label>
+            <select
+              id="township"
+              name="township"
+              value={formData.township}
+              onChange={handleChange}
+              required
+              disabled={formStatus.isSubmitting}
+            >
+              <option value="">Select your township</option>
+              {townshipOptions.map((township, index) => (
+                <option key={index} value={township}>{township}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+        
+        <div className="form-group">
+          <label>How can we help? *</label>
+          <div className="reason-grid">
+            {contactReasons.map((reason, index) => (
+              <div 
+                key={index} 
+                className={`reason-option ${formData.subject === reason.value ? 'selected' : ''}`}
+                onClick={() => !formStatus.isSubmitting && setFormData({...formData, subject: reason.value})}
+              >
+                <div className="reason-icon">{reason.icon}</div>
+                <div className="reason-label">{reason.label}</div>
+              </div>
+            ))}
+          </div>
+          <input
+            type="hidden"
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        
+        <div className="form-group">
+          <label htmlFor="message">Tell us more *</label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            placeholder="What specific help do you need? Do you currently use any digital tools? How many customers do you serve?"
+            rows="6"
+            disabled={formStatus.isSubmitting}
+          ></textarea>
+        </div>
+        
+        <div className="form-footer">
+          <div className="form-disclaimer">
+            <FiShield className="shield-icon" />
+            <span>Your information is secure. We respect your privacy and won't share your details.</span>
+          </div>
+          
+          <div className="priority-note">
+            <FiClock /> <strong>Priority for township businesses:</strong> We respond within 24 hours
+          </div>
+          
+          <button 
+            type="submit" 
+            className="submit-btn"
+            disabled={formStatus.isSubmitting}
+          >
+            {formStatus.isSubmitting ? (
+              <>
+                <FiLoader className="spinner" /> Sending...
+              </>
+            ) : (
+              <>
+                <FiSend /> Send to Township Support Team
+              </>
+            )}
+          </button>
+        </div>
+      </form>
+    );
+  };
+
   return (
     <div className="contact-page">
       {/* Hero Section */}
@@ -228,146 +515,7 @@ function Contact() {
                 <p>Tell us about your business and how we can help you grow digitally</p>
               </div>
               
-              {isSubmitted ? (
-                <div className="success-message">
-                  <FiCheckCircle className="success-icon" />
-                  <h3>Message Received!</h3>
-                  <p>
-                    Thank you for contacting Kasi360. Our township support team will 
-                    contact you within <strong>24 hours</strong>. For urgent matters, 
-                    WhatsApp us at <strong>+27 11 234 5678</strong>.
-                  </p>
-                  {selectedTownship && getTownshipSupportInfo() && (
-                    <div className="township-followup">
-                      <h4>📍 {selectedTownship} Support:</h4>
-                      <p>Contact: {getTownshipSupportInfo().contactPerson}</p>
-                      <p>Next Support Session: {getTownshipSupportInfo().nextSession}</p>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="contact-form">
-                  <div className="form-group">
-                    <label htmlFor="name">Your Name *</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="e.g., Thabo Mokoena"
-                    />
-                  </div>
-                  
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label htmlFor="phone">Phone/WhatsApp *</label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        placeholder="+27 XXX XXX XXXX"
-                      />
-                      <div className="input-note">We'll primarily contact you here</div>
-                    </div>
-                    
-                    <div className="form-group">
-                      <label htmlFor="email">Email (Optional)</label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="your@email.com"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label htmlFor="businessType">Business Type *</label>
-                      <select
-                        id="businessType"
-                        name="businessType"
-                        value={formData.businessType}
-                        onChange={handleChange}
-                        required
-                      >
-                        <option value="">Select your business</option>
-                        {businessTypes.map((type, index) => (
-                          <option key={index} value={type.toLowerCase()}>{type}</option>
-                        ))}
-                      </select>
-                    </div>
-                    
-                    <div className="form-group">
-                      <label htmlFor="township">Township/Location *</label>
-                      <select
-                        id="township"
-                        name="township"
-                        value={formData.township}
-                        onChange={handleChange}
-                        required
-                      >
-                        <option value="">Select your township</option>
-                        {townshipOptions.map((township, index) => (
-                          <option key={index} value={township}>{township}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  
-                  <div className="form-group">
-                    <label>How can we help? *</label>
-                    <div className="reason-grid">
-                      {contactReasons.map((reason, index) => (
-                        <div 
-                          key={index} 
-                          className={`reason-option ${formData.subject === reason.value ? 'selected' : ''}`}
-                          onClick={() => setFormData({...formData, subject: reason.value})}
-                        >
-                          <div className="reason-icon">{reason.icon}</div>
-                          <div className="reason-label">{reason.label}</div>
-                        </div>
-                      ))}
-                    </div>
-                    <input
-                      type="hidden"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  
-                  <div className="form-group">
-                    <label htmlFor="message">Tell us more *</label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      placeholder="What specific help do you need? Do you currently use any digital tools? How many customers do you serve?"
-                      rows="6"
-                    ></textarea>
-                  </div>
-                  
-                  <div className="form-footer">
-                    <div className="priority-note">
-                      <FiClock /> <strong>Priority for township businesses:</strong> We respond within 24 hours
-                    </div>
-                    <button type="submit" className="submit-btn">
-                      <FiSend /> Send to Township Support Team
-                    </button>
-                  </div>
-                </form>
-              )}
+              {renderFormState()}
             </div>
 
             {/* Enhanced Contact Information */}
@@ -388,11 +536,42 @@ function Contact() {
                       <p className="info-detail">{info.detail}</p>
                       <p className="info-subtitle">{info.subtitle}</p>
                       {info.note && <p className="info-note">{info.note}</p>}
-                      {info.link && (
-                        <a href={info.link} className="info-link">
-                          Learn More →
-                        </a>
-                      )}
+                      <div className="action-links">
+                        {info.whatsappLink && (
+                          <a 
+                            href={info.whatsappLink} 
+                            className="channel-link whatsapp"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <FiSmartphone /> Message Now
+                          </a>
+                        )}
+                        {info.telLink && (
+                          <a 
+                            href={info.telLink} 
+                            className="channel-link phone"
+                          >
+                            <FiPhone /> Call Now
+                          </a>
+                        )}
+                        {info.mailLink && (
+                          <a 
+                            href={info.mailLink} 
+                            className="channel-link email"
+                          >
+                            <FiMail /> Email Now
+                          </a>
+                        )}
+                        {info.link && (
+                          <a 
+                            href={info.link} 
+                            className="channel-link"
+                          >
+                            Learn More →
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -412,7 +591,10 @@ function Contact() {
                           <span key={sIndex} className="service-tag">{service}</span>
                         ))}
                       </div>
-                      <a href={`mailto:${hub.contact}`} className="hub-contact">
+                      <a 
+                        href={`mailto:${hub.contact}`} 
+                        className="hub-contact"
+                      >
                         {hub.contact}
                       </a>
                     </div>
@@ -424,7 +606,12 @@ function Contact() {
               <div className="quick-actions">
                 <h3><FiClock /> Quick Actions</h3>
                 <div className="action-buttons">
-                  <a href="https://wa.me/27112345678" className="action-btn whatsapp">
+                  <a 
+                    href="https://wa.me/27112345678" 
+                    className="action-btn whatsapp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FiSmartphone /> WhatsApp Now
                   </a>
                   <a href="/demo" className="action-btn demo">
@@ -512,7 +699,12 @@ function Contact() {
           </div>
           
           <div className="cta-buttons">
-            <a href="https://wa.me/27112345678" className="primary-btn whatsapp">
+            <a 
+              href="https://wa.me/27112345678" 
+              className="primary-btn whatsapp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FiSmartphone /> Chat on WhatsApp
             </a>
             <a href="/demo" className="secondary-btn">

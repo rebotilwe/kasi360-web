@@ -1,4 +1,3 @@
-/* components/Footer/Footer.css */
 .footer {
   background: #050505;
   color: #fff;
@@ -213,7 +212,7 @@
   margin-bottom: 12px;
 }
 
-.link-column a {
+.footer-link {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -224,7 +223,7 @@
   padding: 5px 0;
 }
 
-.link-column a:hover {
+.footer-link:hover {
   color: #00C853;
   transform: translateX(5px);
 }
@@ -236,7 +235,7 @@
   transition: all 0.3s ease;
 }
 
-.link-column a:hover .link-arrow {
+.footer-link:hover .link-arrow {
   opacity: 1;
   transform: translateX(0);
 }
@@ -367,6 +366,17 @@
   border-color: rgba(0, 200, 83, 0.3);
 }
 
+/* Partners Section */
+.partners {
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .partners {
+    text-align: center;
+  }
+}
+
 .partners h5 {
   font-size: 1rem;
   font-weight: 600;
@@ -374,26 +384,35 @@
   margin-bottom: 15px;
 }
 
-.partner-logos {
+.partners-list {
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: 10px 15px;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.partner-logo {
-  padding: 8px 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 20px;
-  font-size: 0.85rem;
+@media (max-width: 768px) {
+  .partners-list {
+    justify-content: center;
+  }
+}
+
+.partner-name {
   color: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
+  font-size: 0.9rem;
 }
 
-.partner-logo:hover {
-  background: rgba(0, 200, 83, 0.1);
-  color: #fff;
-  border-color: rgba(0, 200, 83, 0.3);
+.partner-separator {
+  color: rgba(255, 255, 255, 0.3);
+  margin: 0 5px;
+  font-size: 0.8rem;
+}
+
+/* Remove old partner-logo styles */
+.partner-logos,
+.partner-logo {
+  display: none;
 }
 
 /* Bottom Section */
@@ -415,14 +434,28 @@
   }
 }
 
+.copyright {
+  display: flex;
+  flex-direction: column;
+}
+
 .copyright p {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.6);
-  margin: 5px 0;
+  margin: 2px 0;
+  line-height: 1.4;
 }
 
 .copyright p:first-child {
   color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+.company-reg {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.5px;
 }
 
 .legal-links {
@@ -475,12 +508,18 @@
     justify-content: center;
   }
   
-  .partner-logos {
+  .partners-list {
     justify-content: center;
   }
   
   .legal-links {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 10px;
+  }
+  
+  .copyright p,
+  .company-reg {
+    font-size: 0.75rem;
   }
 }
