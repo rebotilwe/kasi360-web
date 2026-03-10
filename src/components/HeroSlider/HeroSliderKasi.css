@@ -499,3 +499,69 @@
 .debug-overlay {
   display: none !important;
 }
+/* ===== BRAND HEADER WITH SLOGAN ===== */
+.brand-header-kasi {
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeInUp 0.8s 0.1s forwards;
+}
+
+.brand-name-kasi {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: white;
+  display: block;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.brand-slogan-kasi {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  display: block;
+  margin-top: 5px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  position: relative;
+  padding-left: 20px;
+}
+
+.brand-slogan-kasi::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 2px;
+  background: var(--kasi-accent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .brand-name-kasi {
+    font-size: 1.8rem;
+  }
+  
+  .brand-slogan-kasi {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-name-kasi {
+    font-size: 1.5rem;
+  }
+  
+  .brand-slogan-kasi {
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    padding-left: 15px;
+  }
+  
+  .brand-slogan-kasi::before {
+    width: 8px;
+  }
+}

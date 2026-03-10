@@ -523,3 +523,125 @@
     font-size: 0.75rem;
   }
 }
+/* Add these styles to your existing Footer.css */
+
+/* Slogan Container under logo */
+.footer-slogan-container {
+  margin: 10px 0 5px 0;
+}
+
+.footer-slogan {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #00C853;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+}
+
+.footer-slogan::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 2px;
+  background: #00C853;
+  border-radius: 1px;
+}
+
+.footer-slogan::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: #FF6D00;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* Copyright Slogan */
+.copyright-slogan {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #00C853;
+  letter-spacing: 2px;
+  margin-top: 5px;
+  display: inline-block;
+  position: relative;
+  padding: 0 15px;
+}
+
+.copyright-slogan::before,
+.copyright-slogan::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+}
+
+.copyright-slogan::before {
+  left: 0;
+}
+
+.copyright-slogan::after {
+  right: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-slogan {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    padding-left: 15px;
+  }
+  
+  .footer-slogan::after {
+    right: -15px;
+    width: 6px;
+    height: 6px;
+  }
+  
+  .copyright-slogan {
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-slogan {
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+  }
+  
+  .copyright-slogan {
+    display: block;
+    margin-top: 10px;
+    padding: 0;
+  }
+  
+  .copyright-slogan::before,
+  .copyright-slogan::after {
+    display: none;
+  }
+}
+
+/* Optional hover effect for the slogan */
+.footer-slogan:hover {
+  animation: sloganGlow 2s infinite;
+}
+
+@keyframes sloganGlow {
+  0%, 100% { text-shadow: 0 0 10px rgba(0, 200, 83, 0.3); }
+  50% { text-shadow: 0 0 20px rgba(0, 200, 83, 0.6); }
+}

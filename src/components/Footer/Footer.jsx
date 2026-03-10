@@ -65,6 +65,12 @@ function Footer() {
               <span className="logo-accent">360</span>
               <div className="logo-dot"></div>
             </div>
+            
+            {/* ADDED: Slogan under logo */}
+            <div className="footer-slogan-container">
+              <span className="footer-slogan">BUILD. TRADE. THRIVE.</span>
+            </div>
+            
             <p className="footer-tagline">
               Empowering South Africa's Township SMEs with digital solutions for sustainable growth.
             </p>
@@ -209,7 +215,8 @@ function Footer() {
           <div className="copyright">
             <p>&copy; {currentYear} Kasi360. All rights reserved.</p>
             <p className="company-reg">KASI DIGITAL CONNECT (PTY) LTD (2025/516387/07)</p>
-            <p>Empowering Township SMEs through Digital Innovation</p>
+            {/* ADDED: Slogan in the copyright section */}
+            <p className="copyright-slogan">BUILD. TRADE. THRIVE.</p>
           </div>
 
           <div className="legal-links">

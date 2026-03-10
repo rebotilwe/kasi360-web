@@ -99,6 +99,12 @@ function HeroSliderKasi() {
               {/* Content */}
               <div className="slide-content-kasi">
                 <div className="content-wrapper-kasi">
+                  {/* ADDED: Kasi360 with slogan */}
+                  <div className="brand-header-kasi">
+                    <span className="brand-name-kasi">Kasi360</span>
+                    <span className="brand-slogan-kasi">BUILD. TRADE. THRIVE.</span>
+                  </div>
+
                   <div className="slide-pre-title-kasi">
                     <span className="pre-title-line"></span>
                     <span className="pre-title-text">KASI DIGITAL CONNECT</span>
