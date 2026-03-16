@@ -27,7 +27,7 @@ function About() {
     { number: "70%", label: "of SA Businesses are SMEs", icon: <FiUsers />, color: "#00C853" },
     { number: "34%", label: "Contribution to GDP", icon: <FiDollarSign />, color: "#0D47A1" },
     { number: "98%", label: "Lack Digital Tools", icon: <FiSmartphone />, color: "#FF6D00" },
-    { number: "R2,000", label: "Starting Cost", icon: <FiTarget />, color: "#9C27B0" }
+    { number: "R150,00", label: "Starting Cost", icon: <FiTarget />, color: "#9C27B0" }
   ];
 
   const kasi360Highlights = [
@@ -171,7 +171,7 @@ function About() {
               Despite contributing <strong>34% to South Africa's GDP</strong>, township businesses 
               face a critical <strong>98% digital gap</strong>. Most operate with cash-only transactions, 
               manual record-keeping, and limited market access. Kasi360 exists to bridge this divide 
-              with solutions starting from just <strong>R2,000</strong>.
+              with solutions starting from just <strong>R150,00</strong>.
             </p>
           </div>
         </div>
@@ -326,7 +326,7 @@ function About() {
           
           <div className="cta-stats">
             <div className="cta-stat">
-              <div className="stat-number">R2,000</div>
+              <div className="stat-number">R150,00</div>
               <div className="stat-label">Starting Cost</div>
             </div>
             <div className="cta-stat">

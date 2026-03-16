@@ -42,7 +42,7 @@ function SuccessStories() {
       },
       challenge: "Limited to walk-in customers, cash-only transactions, and no digital presence.",
       solution: "Implemented Kasi360's digital tools, mobile payment system, and hyperlocal marketing.",
-      testimonial: "The R2,000 investment changed everything. In 6 months, I went from struggling to thriving.",
+      testimonial: "The R150,00 investment changed everything. In 6 months, I went from struggling to thriving.",
       tags: ["Digital Payments", "E-commerce", "Marketing", "Growth"]
     },
     {
@@ -240,7 +240,7 @@ function SuccessStories() {
             <div className="timeline-step">
               <div className="step-number">1</div>
               <h3>Digital Foundation</h3>
-              <p>Low-cost digital tools implementation starting under R2,000</p>
+              <p>Low-cost digital tools implementation starting under R150,00</p>
             </div>
             <div className="timeline-step">
               <div className="step-number">2</div>
@@ -549,12 +549,12 @@ function SuccessStories() {
             <h2>Start Your Success Story</h2>
             <p>
               Join over 500 township businesses that have transformed with Kasi360. 
-              Get started with our ecosystem for under R2,000 and begin your journey 
+              Get started with our ecosystem for under R150,00 and begin your journey 
               to sustainable growth.
             </p>
             <div className="cta-stats">
               <div className="cta-stat">
-                <div className="stat-number">R2,000</div>
+                <div className="stat-number">R150,00</div>
                 <div className="stat-label">Starting Cost</div>
               </div>
               <div className="cta-stat">
@@ -597,7 +597,7 @@ function SuccessStories() {
             
             <div className="faq-item">
               <h3>What's the typical investment needed?</h3>
-              <p>Starting costs range from R2,000 for basic digital tools to R10,000 for comprehensive ecosystem implementation.</p>
+              <p>Starting costs range from R150,00 for basic digital tools to R10,000 for comprehensive ecosystem implementation.</p>
             </div>
             
             <div className="faq-item">

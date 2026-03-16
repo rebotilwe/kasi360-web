@@ -57,7 +57,7 @@ function FinancialProjections({ variant = "default", title, subtitle }) {
     {
       icon: <FiTarget />,
       title: "Starting Cost",
-      value: "R2,000",
+      value: "R150,00",
       description: "Entry investment for businesses to join ecosystem",
       source: "Lowest cost-to-benefit ratio in market",
       color: "#0D47A1"
@@ -201,7 +201,7 @@ function FinancialProjections({ variant = "default", title, subtitle }) {
             <h4>Sustainable Business Ecosystem</h4>
             <p>
               Our model focuses on <strong>sustainable township business growth</strong> rather than 
-              financial projections. Starting from just <strong>R2,000 per business</strong>, we enable 
+              financial projections. Starting from just <strong>R150,00 per business</strong>, we enable 
               entrepreneurs to achieve <strong>profitability within 18-24 months</strong> while creating 
               lasting community impact.
             </p>

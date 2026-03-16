@@ -429,7 +429,7 @@ function Guides() {
             </p>
             <div className="ecosystem-stats">
               <div className="eco-stat">
-                <div className="eco-number">R2,000</div>
+                <div className="eco-number">R150,00</div>
                 <div className="eco-label">Entry Cost</div>
               </div>
               <div className="eco-stat">

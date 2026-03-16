@@ -40,7 +40,7 @@ function StatsSection({ variant = "default", title, subtitle }) {
       description: "Critical barrier to business expansion"
     },
     { 
-      value: "R2,000", 
+      value: "R150,00", 
       label: "Starting Investment", 
       sublabel: "Entry cost for Kasi360 ecosystem",
       icon: <FiTarget />,
@@ -167,7 +167,7 @@ function StatsSection({ variant = "default", title, subtitle }) {
             <p>
               These statistics highlight both the <strong>massive potential</strong> and the 
               <strong> critical need</strong> for digital solutions in South Africa's township economy.
-              Kasi360 bridges this gap starting from just <strong>R2,000</strong>.
+              Kasi360 bridges this gap starting from just <strong>R150,00</strong>.
             </p>
           </div>
         </div>

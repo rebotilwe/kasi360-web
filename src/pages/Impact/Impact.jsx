@@ -81,7 +81,7 @@ function Impact() {
       stats: [
         { value: "300%", label: "Average Revenue Growth" },
         { value: "18-24", label: "Months to Break-even" },
-        { value: "R2,000", label: "Starting Investment" }
+        { value: "R150,00", label: "Starting Investment" }
       ],
       description: "Comprehensive digital transformation for township businesses"
     },
@@ -607,7 +607,7 @@ function Impact() {
             </p>
             <div className="cta-stats">
               <div className="cta-stat">
-                <div className="stat-number">R2,000</div>
+                <div className="stat-number">R150,00</div>
                 <div className="stat-label">Starting Investment</div>
               </div>
               <div className="cta-stat">

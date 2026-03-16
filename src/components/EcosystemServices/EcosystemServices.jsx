@@ -146,7 +146,7 @@ function EcosystemServices({ variant = "default", title, subtitle }) {
               <p>
                 Unlike piecemeal solutions, our ecosystem combines <strong>fintech, safety, and training</strong> 
                 specifically designed for township business environments. This holistic approach delivers 
-                <strong> measurable results</strong> starting from just <strong>R2,000</strong>.
+                <strong> measurable results</strong> starting from just <strong>R150,00</strong>.
               </p>
             </div>
           </div>

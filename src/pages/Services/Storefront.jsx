@@ -203,7 +203,7 @@ function Storefront() {
                 <div className="stat-label">Store availability</div>
               </div>
               <div className="stat">
-                <div className="stat-number">R2,000</div>
+                <div className="stat-number">R150,00</div>
                 <div className="stat-label">Starting investment</div>
               </div>
             </div>

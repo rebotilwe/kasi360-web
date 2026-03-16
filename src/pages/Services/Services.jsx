@@ -114,7 +114,7 @@ function Services() {
   const stats = [
     { number: "85%", label: "Businesses see revenue growth within 3 months" },
     { number: "24/7", label: "Technical support available" },
-    { number: "R2K", label: "Average monthly cost savings" },
+    { number: "R150", label: "Average monthly cost savings" },
     { number: "98%", label: "Customer satisfaction rate" }
   ];
 
